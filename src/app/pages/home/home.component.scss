@@ -1,0 +1,183 @@
+section {
+  padding-bottom: 2.5em;
+
+  .cabecalho {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f2f2f2;
+
+    .titulo {
+      width: 100%;
+      max-width: 700px;
+      color: #fff;
+
+      h1 {
+        color: #00A74A;
+        font-size: 22pt;
+
+        span {
+          color: #059747;
+          font-weight: 600;
+        }
+      }
+
+      h2 {
+        padding: .25em 0;
+        color: #7d7d7d;
+        font-size: 14pt;
+      }
+    }
+
+    img {
+      width: 100%;
+      max-width: 350px;
+    }
+  }
+
+  .treinamento {
+    width: 100%;
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .caixa {
+      width: 100%;
+      max-width: 1000px;
+      margin: 1em 0;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      background-color: #e2e2e2;
+      color: #333;
+      cursor: pointer;
+
+      label {
+        margin-bottom: .5em;
+        font-size: 15pt;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      p {
+        cursor:auto;
+      }
+
+      .conteudo {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+        img {
+          width: 100%;
+          max-height: 400px;
+          max-width: 400px;
+          margin: 0 1em;
+        }
+      }
+
+      #tituloEspecial {
+        margin: 1em 0 .5em 0;
+      }
+
+      .checkbox {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+        p {
+          margin-top: .75em;
+          margin-right: .5em;
+          color: #00A74A;
+          font-weight: 600;
+          cursor: pointer;
+        }
+
+        input {
+          cursor: pointer;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .formulario {
+      width: 100%;
+      max-width: 1000px;
+      margin: 1em 0;
+
+      h3 {
+        font-size: 17pt;
+        font-weight: 600;
+      }
+
+      .campoNome {
+        width: 100%;
+        margin: 1em 0;
+        display: flex;
+        flex-direction: column;
+
+        label {
+          margin: 0 0 .5em .25em;
+          font-size: 11pt;
+        }
+
+        input {
+          padding: .25em;
+          border: 1px  solid #333;
+          border-radius: 5px;
+        }
+      }
+
+      .campoDeclaracao {
+        width: 100%;
+        margin: 1em 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        cursor: pointer;
+
+        input {
+          margin: .35em .5em 0 0;
+          cursor: pointer;
+        }
+
+        p {
+          font-size: 11pt;
+
+          span {
+            color: #00A74A;
+            font-weight: 600;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .botao {
+        width: 100%;
+        text-align: center;
+
+        button {
+          width: 100%;
+          max-width: 250px;
+          padding: .25em;
+          border: none;
+          border-radius: 5px;
+          background-color: #333;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

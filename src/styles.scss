@@ -1,0 +1,21 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+
+.ng-select {
+  width: 100%;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+.ng-dropdown-panel {
+  border: 1px solid #8f8f8f;
+}

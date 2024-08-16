@@ -1,0 +1,81 @@
+<section class="login" *ngIf="autenticado == false">
+  <div class="cabecalho">
+    <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
+  </div>
+
+  <form [formGroup]="formularioLogin" #formDir="ngForm">
+    <div class="titulo">
+      <div class="linha"></div>
+      <p>Relatórios Poty Protege</p>
+      <div class="linha"></div>
+    </div>
+
+    <div class="camposFormulario">
+      <i class="fa fa-user"></i>
+
+      <input type="text"
+        placeholder="Usuário{{formularioLogin.get('Usuario')?.invalid && formDir.submitted? ' é obrigatório': ''}}"
+        formControlName="Usuario"
+        [style.border]="formularioLogin.get('Usuario')?.invalid && formDir.submitted? '2px solid red': '2px solid transparent'">
+    </div>
+
+    <div class="camposFormulario" id="campoSenha">
+      <i class="fa fa-lock"></i>
+
+      <input type="{{senhaVisivel? 'text': 'password'}}"
+        placeholder="Senha{{formularioLogin.get('Senha')?.invalid && formDir.submitted? ' é obrigatória': ''}}"
+        formControlName="Senha"
+        [style.border]="formularioLogin.get('Senha')?.invalid && formDir.submitted? '2px solid red': '2px solid transparent'">
+
+      <i id="botaoVisibilidadeSenha" class="fa fa-{{senhaVisivel? 'eye': 'eye-slash'}}"
+        (click)="alterarVisibilidadeSenha()"></i>
+    </div>
+
+    <button (click)="realizarLogin()">Entrar</button>
+  </form>
+</section>
+
+<section class="relatorio" *ngIf="autenticado == true">
+  <div class="cabecalho">
+    <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
+  </div>
+
+  <label>Relatório</label>
+  <div class="tabelaRelatorio">
+    <div class="tabela" *ngIf="relatorio.length > 0">
+      <table>
+        <thead>
+          <th>Código Alternativo</th>
+          <th>Nome</th>
+          <th>Depatamento</th>
+          <th>Cargo</th>
+          <th>Data/Hora</th>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of relatorio">
+            <td>{{item.CodigoAlternativo}}</td>
+            <td>{{item.Nome}}</td>
+            <td>{{item.Departamento}}</td>
+            <td>{{item.Cargo}}</td>
+            <td>{{formatarDataBrasileira(item.DataHora)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="exportacao">
+    <select [(ngModel)]="valorExportar">
+      <option value="XLSX">XLSX</option>
+      <option value="PDF">PDF</option>
+      <option value="CSV">CSV</option>
+    </select>
+
+    <button (click)="exportarConteudo()">
+      <i class="fa fa-download"></i>
+    </button>
+  </div>
+</section>
+
+<app-rodape></app-rodape>

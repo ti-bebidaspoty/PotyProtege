@@ -1,0 +1,629 @@
+<section>
+  <div class="cabecalho">
+    <div class="titulo">
+      <h1>
+        Bem-vindo ao Treinamento de Cibersegurança da
+        <span>Bebidas Poty.</span>
+      </h1>
+
+      <h2>Parece que você foi vítima de um golpe cibernético. Leia atentamente todo o treinamento marcando os tópicos
+        como
+        "Verificado" e no final envie o formulário para completar.</h2>
+    </div>
+
+    <img src="/assets/images/home.png" alt="">
+  </div>
+
+  <form class="treinamento" [formGroup]="formularioTreinamento" #formDir="ngForm">
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico1')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico1')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico1')?.invalid && formDir.submitted? 'red': '#333'">Introdução</label>
+
+      <p>Vírus, ransomware e malware são termos relacionados à segurança cibernética e referem-se a diferentes tipos de
+        softwares maliciosos projetados para causar danos a um sistema ou dispositivo. Nos próximos tópicos cada um
+        desses assuntos será explicado.</p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico1">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico2')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico2')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico2')?.invalid && formDir.submitted? 'red': '#333'">Ransomware</label>
+
+      <div class="conteudo">
+        <img src="/assets/images/ransoware.png" alt="">
+
+        <div class="texto">
+          <p>
+            • O que é: Ransomware é um tipo de malware que criptografa os arquivos de um sistema e exige um resgate em
+            troca
+            da chave de descriptografia.
+          </p>
+
+          <p>
+            • Prevenção: Evite abrir anexos de e-mails suspeitos, mantenha o software atualizado, faça backups
+            regulares,
+            mantenha medidas de segurança avançada em aplicativos, como por exemplo autenticação de 2 fatores do
+            WhatsApp
+            etc.
+          </p>
+
+          <p>
+            • Prevenção: Evite abrir anexos de e-mails suspeitos, mantenha o software atualizado, faça backups
+            regulares,
+            mantenha medidas de segurança avançada em aplicativos, como por exemplo autenticação de 2 fatores do
+            WhatsApp
+            etc.
+          </p>
+        </div>
+      </div>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico2">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico3')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico3')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico3')?.invalid && formDir.submitted? 'red': '#333'">Vírus</label>
+
+      <p>
+        • O que é: Vírus de computador são programas maliciosos que se replicam e podem danificar ou corromper arquivos
+        e sistemas. Um tipo de vírus bem famoso é o Cavalo de Tróia.
+      </p>
+
+      <p>
+        • Cavalo de Tróia: é um tipo de malware que normalmente fica oculto como um anexo em um e-mail ou arquivo de
+        download gratuito e, em seguida, é transferido para o dispositivo do usuário. Depois de baixado, o código
+        malicioso executará a tarefa para a qual o invasor o criou, como obter acesso de backdoor a sistemas
+        corporativos, espionar a atividade on-line dos usuários ou roubar dados confidenciais.
+      </p>
+
+      <p>
+        • Prevenção: Mantenha o software antivírus atualizado, evite downloads suspeitos e tenha cuidado com anexos de
+        e-mails desconhecidos também. Caso tenha muita dúvida se é ou não um potencial vírus, não faça nada, contate o
+        Suporte Técnico que lidarão instruções ou até mesmo deslocara ao local para verificar a possível ameaça.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico3">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico4')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico4')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico4')?.invalid && formDir.submitted? 'red': '#333'">Malware</label>
+
+      <div class="conteudo">
+        <div class="texto">
+          <p>
+            • O que é: Malware é um termo genérico que engloba todos os tipos de software malicioso projetado para
+            danificar, roubar informações ou realizar atividades prejudiciais em sistemas.
+          </p>
+
+          <p>
+            • Prevenção: Use antivírus eficaz, mantenha o software atualizado e evite clicar em links suspeitos ou
+            qualquer coisa suspeita.
+          </p>
+
+          <p>
+            • Ou seja, Malware são todos os tipos de vírus existentes que podem vir a infectar seu ambiente pegando dois
+            ou mais desse englobado é que chamamos de malware.
+          </p>
+        </div>
+
+        <img src="/assets/images/malware.png" alt="">
+      </div>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico4">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico5')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico5')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico5')?.invalid && formDir.submitted? 'red': '#333'">Engenharia
+        Social</label>
+
+      <p>
+        • A engenharia social é uma técnica utilizada por cibercriminosos para manipular pessoas e obter acesso a
+        informações confidenciais, sistemas ou redes. Em vez de tentar explorar vulnerabilidades técnicas, os ataques de
+        engenharia social exploram a natureza humana, como a confiança, curiosidade, medo ou desejo de ajudar. Os
+        ataques de engenharia social podem ocorrer em diversas formas, como Phishing, Pretexting, Spear Phishing e
+        Engenharia Social Telefônica e Offline.
+        Veremos todas elas mais à frente.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico5">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico6')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico6')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico6')?.invalid && formDir.submitted? 'red': '#333'">Phishing</label>
+
+      <div class="conteudo">
+        <img src="/assets/images/phishing.jpg" alt="">
+
+        <div class="texto">
+          <p>
+            • É uma forma de ataque cibernético em que um atacante se disfarça como uma entidade confiável para enganar
+            os usuários e obter informações sensíveis, como senhas, informações financeiras e detalhes pessoais.
+          </p>
+
+          <p>
+            • O phishing é uma ameaça séria à segurança online, e a educação e a vigilância são essenciais para
+            proteger-se contra essas tentativas de fraude. Sempre desconfie de comunicações não solicitadas e verifique
+            a autenticidade das fontes antes de compartilhar informações pessoais.
+          </p>
+        </div>
+      </div>
+
+      <label [style.color]="formularioTreinamento.get('Topico6')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+        funciona o Phishing</label>
+
+      <p>
+        • Um atacante envia mensagens de e-mail, mensagens de texto ou comunicações online que parecem ser de fontes
+        legítimas, como bancos, empresas ou sites de redes sociais.
+      </p>
+
+      <p>
+        • Essas mensagens geralmente contêm links maliciosos que direcionam os usuários a páginas falsas que imitam
+        sites autênticos.
+      </p>
+
+      <p>
+        • Os usuários são solicitados a fornecer informações confidenciais, como senhas, números de cartão de crédito ou
+        dados pessoais.
+      </p>
+
+      <label [style.color]="formularioTreinamento.get('Topico6')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+        evitar o Phishing</label>
+
+      <p>
+        • Desconfie de E-mails e Mensagens Suspeitas: Não clique em links ou abra anexos em e-mails ou mensagens de
+        fontes desconhecidas.
+      </p>
+
+      <p>
+        • Verifique o Link: Antes de inserir informações em um site, verifique se o endereço é legítimo e seguro.
+        Procure por erros de ortografia ou domínios falsos.
+      </p>
+
+      <p>
+        • Use Autenticação Multifator (MFA): Ative a MFA, ou seja, autenticação de multe fatores sempre que possível
+        para adicionar uma camada extra de segurança às suas contas online. Ex: (WhatsApp, Contas Bancárias, Redes
+        Social).
+      </p>
+
+      <p>
+        • Mantenha o Software Atualizado: Atualizações regulares de software podem corrigir vulnerabilidades exploradas
+        por golpistas.
+      </p>
+
+      <p>
+        • Educação sobre Segurança: Esteja ciente das táticas de phishing e eduque-se para reconhecer sinais de
+        tentativas de ataque.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico6">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico7')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico7')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico7')?.invalid && formDir.submitted? 'red': '#333'">Pretexting</label>
+
+      <div class="conteudo">
+        <div class="texto">
+          <p>
+            • É uma forma de ataque de engenharia social em que um indivíduo cria uma história fictícia ou pretexto para
+            obter informações confidenciais de uma vítima. O atacante finge ser alguém em quem a vítima confiaria, como
+            um funcionário, colega, autoridade ou conhecido.
+          </p>
+
+          <p>
+            • Pretexting é uma técnica sofisticada de engenharia social que explora a confiança das vítimas. A
+            conscientização e a verificação rigorosa de identidade são essenciais para evitar cair em golpes de
+            pretexto.
+          </p>
+
+          <label [style.color]="formularioTreinamento.get('Topico7')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+            funciona o Pretexting</label>
+
+          <p>
+            • O atacante pesquisa a vítima para obter informações pessoais, como nome, cargo, histórico e contatos.
+          </p>
+
+          <p>
+            • O atacante cria uma narrativa convincente, como fingir ser um colega de trabalho que precisa de
+            informações
+            para uma tarefa importante.
+          </p>
+
+          <p>
+            • Usando essa narrativa, o atacante entra em contato com a vítima, por telefone, e-mail ou pessoalmente, e
+            pede
+            informações confidenciais, como senhas, números de conta ou detalhes pessoais.
+          </p>
+        </div>
+
+        <img src="/assets/images/pretexting.png" alt="">
+      </div>
+
+      <label [style.color]="formularioTreinamento.get('Topico7')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+        evitar o Pretexting</label>
+
+      <p>
+        • Verificação de Identidade: Sempre verifique a identidade da pessoa que solicita informações confidenciais.
+        Peça informações de contato e confirme a solicitação com uma fonte confiável.
+      </p>
+
+      <p>
+        • Desconfie de Solicitações Não Solicitadas: Se alguém entrar em contato com você pedindo informações
+        confidenciais sem motivo aparente, seja cético e questione a solicitação.
+      </p>
+
+      <p>
+        • Educação sobre Segurança: Eduque-se e outros sobre as táticas de engenharia social, para que todos possam
+        reconhecer tentativas de pretexto.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico7">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico8')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico8')">
+      <label [style.color]="formularioTreinamento.get('Topico8')?.invalid && formDir.submitted? 'red': '#333'">Spear
+        Phishing</label>
+
+      <div class="conteudo">
+        <img src="/assets/images/spearPhishing.jpg" alt="">
+
+        <div class="texto">
+          <p>
+            • É uma forma direcionada de ataque de phishing, na qual os cibercriminosos personalizam seus ataques,
+            visando
+            indivíduos específicos, organizações ou grupos. O atacante pesquisa e coleta informações detalhadas sobre a
+            vítima para criar mensagens de phishing altamente convincentes e aparentemente legítimas.
+          </p>
+        </div>
+      </div>
+
+      <label [style.color]="formularioTreinamento.get('Topico8')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+        funciona o Spear Phishing</label>
+
+      <p>
+        • Coleta de Informações: O atacante coleta dados detalhados sobre a vítima, como nome, cargo, colegas,
+        interesses e detalhes pessoais. Isso pode ser feito por meio de pesquisas online, redes sociais e outros
+        métodos.
+      </p>
+
+      <p>
+        • Criação de Mensagem Personalizada: Com base nas informações coletadas, o atacante cria mensagens de phishing
+        altamente personalizadas. Essas mensagens podem parecer ser de uma fonte confiável, como um colega de trabalho,
+        gerente, amigo ou serviço legítimo.
+      </p>
+
+      <p>
+        • Envio da Mensagem: O atacante envia a mensagem de phishing para a vítima, geralmente contendo um link ou anexo
+        malicioso. A mensagem é projetada para parecer genuína e atrativa, muitas vezes explorando situações pessoais ou
+        profissionais da vítima.
+      </p>
+
+      <p>
+        • Exploração: Se a vítima cair no golpe e interagir com a mensagem (por exemplo, clicando em um link malicioso
+        ou fornecendo informações confidenciais), o atacante pode acessar informações sensíveis, contas ou redes da
+        vítima.
+      </p>
+
+      <label [style.color]="formularioTreinamento.get('Topico8')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+        evitar o Spear Phishing</label>
+
+      <p>
+        • Educação: Esteja ciente de técnicas de spear phishing e eduque-se sobre como identificar mensagens suspeitas.
+      </p>
+
+      <p>
+        • Verificação de Remetentes: Sempre verifique a autenticidade de mensagens, especialmente aquelas que solicitam
+        informações confidenciais. Entre em contato com a fonte diretamente para confirmar a solicitação.
+      </p>
+
+      <p>
+        • Filtragem de E-mail: Use filtros de e-mail eficazes que podem ajudar a identificar mensagens de phishing.
+      </p>
+
+      <p>
+        • Autenticação Multifator (MFA): Ative a MFA em contas críticas para adicionar uma camada adicional de
+        segurança.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico8">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico9')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico9')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico9')?.invalid && formDir.submitted? 'red': '#333'">Engenharia
+        Social Eletrônica</label>
+
+      <div class="conteudo">
+        <div class="texto">
+          <p>
+            • Também conhecida como "phreaking social", é uma técnica de manipulação que envolve a exploração de
+            interações telefônicas para obter informações confidenciais, acessar sistemas ou realizar atividades
+            maliciosas. Nesse tipo de ataque, o atacante usa táticas psicológicas para persuadir a vítima a divulgar
+            informações confidenciais por telefone.
+          </p>
+
+          <p>
+            • A engenharia social telefônica explora a confiança e a vulnerabilidade das pessoas por telefone. A
+            conscientização, a verificação rigorosa e a educação sobre segurança são essenciais para evitar cair em
+            golpes desse tipo.
+          </p>
+        </div>
+
+        <img src="/assets/images/engenhariaSocial.png" alt="">
+      </div>
+
+      <label [style.color]="formularioTreinamento.get('Topico9')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+        funciona a Engenharia Social Eletrônica</label>
+
+      <p>
+        • Preparação: O atacante coleta informações sobre a vítima e o alvo desejado, como nome, posição na organização
+        e informações pessoais.
+      </p>
+
+      <p>
+        • Estabelecimento de Confiança: O atacante entra em contato com a vítima por telefone e tenta estabelecer uma
+        relação de confiança ou simpatia, frequentemente se fazendo passar por uma pessoa confiável ou autoridade.
+      </p>
+
+      <p>
+        • Manipulação Psicológica: O atacante usa técnicas de persuasão e manipulação para convencer a vítima a divulgar
+        informações confidenciais, como senhas, números de conta ou dados corporativos.
+      </p>
+
+      <p>
+        • Coleta de Dados: Com as informações obtidas, o atacante pode acessar sistemas, contas ou realizar atividades
+        fraudulentas.
+      </p>
+
+      <label [style.color]="formularioTreinamento.get('Topico9')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+        evitar a Engenharia Social Eletrônica</label>
+
+      <p>
+        • Verificação de Identidade: Sempre verifique a identidade da pessoa que entra em contato por telefone e não
+        compartilhe informações confidenciais com estranhos.
+      </p>
+
+      <p>
+        • Desconfie de Solicitações Inesperadas: Se alguém solicitar informações confidenciais por telefone sem motivo
+        aparente, seja cético e questione a solicitação.
+      </p>
+
+      <p>
+        • Políticas de Segurança: Organizações devem implementar políticas de segurança telefônica que orientem os
+        funcionários sobre como lidar com solicitações de informações por telefone.
+      </p>
+
+      <p>
+        • Conscientização e Treinamento: Eduque os funcionários sobre as táticas de engenharia social telefônica e
+        forneça treinamento para reconhecer e relatar tentativas de ataque.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico9">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico10')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico10')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico10')?.invalid && formDir.submitted? 'red': '#333'">Engenharia
+        Social Offline</label>
+
+      <div class="conteudo">
+        <img src="/assets/images/engenhariaOff.png" alt="">
+
+        <div class="texto">
+          <p>
+            • A engenharia social offline é uma técnica de manipulação que envolve a interação direta entre um atacante
+            e
+            a vítima no mundo real, fora do ambiente digital. Nesse tipo de ataque, os golpistas usam táticas
+            psicológicas e sociais para obter informações confidenciais, acesso a sistemas ou persuadir a vítima a
+            realizar ações indesejadas.
+          </p>
+
+          <p>
+            • A engenharia social offline explora a vulnerabilidade das pessoas em interações do mundo real. A
+            conscientização, a verificação rigorosa e a educação sobre segurança são essenciais para evitar cair em
+            golpes desse tipo.
+          </p>
+        </div>
+      </div>
+
+      <label [style.color]="formularioTreinamento.get('Topico10')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+        funciona a Engenharia Social Offline</label>
+
+      <p>
+        • Abordagem Direta: O atacante entra em contato com a vítima pessoalmente, por telefone ou em locais físicos,
+        como escritórios, conferências ou eventos sociais.
+      </p>
+
+      <p>
+        • Estabelecimento de Confiança: O atacante pode se fazer passar por um funcionário, cliente, fornecedor ou
+        autoridade de confiança para criar uma relação de confiança.
+      </p>
+
+      <p>
+        • Manipulação Psicológica: Usando persuasão, simpatia ou autoridade, o atacante tenta convencer a vítima a
+        divulgar informações confidenciais, conceder acesso a sistemas ou tomar medidas específicas.
+      </p>
+
+      <p>
+        • Coleta de Dados ou Ações Maliciosas: Com as informações obtidas ou as ações realizadas pela vítima, o atacante
+        pode acessar informações sensíveis, contas ou sistemas, ou até mesmo realizar fraudes.
+      </p>
+
+      <label [style.color]="formularioTreinamento.get('Topico10')?.invalid && formDir.submitted? 'red': '#333'" id="tituloEspecial">Como
+        evitar a Engenharia Social Offline</label>
+
+      <p>
+        • Verificação de Identidade: Sempre verifique a identidade da pessoa que interage com você e não compartilhe
+        informações confidenciais com estranhos.
+      </p>
+
+      <p>
+        • Desconfie de Solicitações Inesperadas: Se alguém solicitar informações confidenciais ou ações fora do comum,
+        seja cético e questione a solicitação.
+      </p>
+
+      <p>
+        • Políticas de Segurança: Organizações devem implementar políticas de segurança que orientem os funcionários
+        sobre como lidar com solicitações de informações ou ações fora do comum.
+      </p>
+
+      <p>
+        • Treinamento e Conscientização: Eduque os funcionários e pessoas em geral sobre as táticas de engenharia social
+        offline e forneça treinamento para reconhecer e relatar tentativas de ataque.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico10">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico11')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico11')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico11')?.invalid && formDir.submitted? 'red': '#333'">Conscientização
+        sobre golpes online</label>
+
+      <p>
+        • A conscientização sobre golpes online é fundamental nos dias de hoje, em que a tecnologia e a internet
+        desempenham um papel central em nossas vidas. Com o aumento do uso da internet, também surgiram diversas formas
+        de golpes e fraudes virtuais, visando enganar e explorar os usuários. Portanto, é imprescindível entender os
+        diferentes tipos de golpes online e como se proteger contra eles.
+      </p>
+
+      <p>
+        • Além disso, é essencial ter cuidado com ofertas muito boas para serem verdadeiras, como promoções incríveis ou
+        prêmios surpreendentes. Muitas vezes, essas ofertas são apenas iscas para atrair vítimas, levando-as a
+        compartilhar informações pessoais ou realizar pagamentos antecipados. Antes de cair em uma oferta tentadora, é
+        importante pesquisar e verificar a legitimidade da empresa ou promoção.
+      </p>
+
+      <p>
+        • A conscientização sobre golpes online também envolve manter-se atualizado sobre as últimas técnicas utilizadas
+        pelos criminosos cibernéticos. É essencial aprender a identificar sinais de alerta, como erros gramaticais ou
+        ortográficos em e-mails ou mensagens, Links suspeitos, solicitações de informações pessoais não solicitadas e
+        pressão para tomar decisões rápidas. Manter-se informado sobre as últimas ameaças e práticas de segurança é
+        fundamental para se proteger.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico11">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico12')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico12')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico12')?.invalid && formDir.submitted? 'red': '#333'">Conclusão</label>
+
+      <p>
+        • Por fim, a educação é a chave para a conscientização e prevenção de golpes online. É importante compartilhar
+        esse conhecimento com amigos, familiares e colegas, para que todos estejam cientes dos riscos e saibam como se
+        proteger. Isso inclui ensinar a importância de nunca compartilhar informações pessoais ou financeiras por meios
+        inseguros, como e-mails não criptografados ou redes Wi-Fi públicas.
+      </p>
+
+      <p>
+        • Em resumo, a conscientização sobre golpes online é fundamental para a segurança digital. Ficar atento,
+        conhecer
+        as táticas utilizadas pelos criminosos e adotar medidas de segurança adequadas são essenciais para proteger-se
+        contra fraudes virtuais. Lembre-se de que a prevenção é sempre melhor do que lidar com as consequências de um
+        golpe.
+      </p>
+
+      <p>
+        • E sempre em caso de dúvidas de como agir ou o que fazer, NÂO faça nada sem comunicar primeiramente a
+        Tecnologia
+        da Informação (T.I), estamos sempre disponíveis para atendê-los e tirar dúvidas e principalmente nesses casos
+        dar a prioridade necessária para resolvermos de forma eficaz e rápida. Não evite em ligar, está com dúvida ligue
+        no ramal: 9564 – Suporte de Infraestrutura.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico12">
+      </div>
+    </div>
+
+    <div class="formulario">
+      <h3>Faça o envio do formulário para completar o treinamento:</h3>
+
+      <div class="campoNome">
+        <label>Digite seu Nome Completo:</label>
+        <ng-select class="custom" formControlName="Colaborador" [clearable]="false"
+          [style.border]="formularioTreinamento.get('Colaborador')?.invalid && formDir.submitted? '1px solid red': '1px solid #828282'"
+          style="border-radius: 5px">
+          <ng-option *ngFor="let item of colaboradores" value="{{item.ColaboradorID}}">{{item.ColaboradorID}} -
+            {{item.Nome}}</ng-option>
+        </ng-select>
+      </div>
+
+      <div class="campoDeclaracao" (click)="mudarTopico('Declaracao')">
+        <input type="checkbox" formControlName="Declaracao">
+        <p [style.color]="formularioTreinamento.get('Declaracao')?.invalid && formDir.submitted? 'red': '#33'">
+          <span>Declaro</span> que li e compreendi integralmente o que foi passado neste treinamento, e estarei
+          assumindo toda a responsabilidade por minhas ações futuras e consequências que possam surgir dessa ação.</p>
+      </div>
+
+      <div class="botao">
+        <button (click)="enviarFormulario()">Enviar</button>
+      </div>
+    </div>
+  </form>
+</section>
+
+<app-rodape></app-rodape>
