@@ -45,6 +45,10 @@ export class AdministradorComponent implements OnInit {
     {
       CampoTitulo: "Data/Hora"
     }
+    ,
+    {
+      CampoTitulo: "Acertos"
+    }
   ];
 
   protected campoPesquisa: string = '';
@@ -69,7 +73,8 @@ export class AdministradorComponent implements OnInit {
         Nome: item.Nome,
         Departamento: item.Departamento,
         Cargo: item.Cargo,
-        DataHora: this.formatarDataBrasileira(item.DataHora)
+        DataHora: this.formatarDataBrasileira(item.DataHora),
+        Acertos: item.Acertos
       });
     });
   }

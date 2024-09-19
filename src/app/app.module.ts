@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RodapeComponent } from "./components/rodape/rodape.component";
 import { AdministradorComponent } from './pages/administrador/administrador.component';
+import { QuestionarioComponent } from './pages/questionario/questionario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RodapeComponent,
-    AdministradorComponent
+    AdministradorComponent,
+    QuestionarioComponent,
   ],
   imports: [
     BrowserModule,

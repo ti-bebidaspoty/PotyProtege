@@ -5,5 +5,6 @@ export interface IRelatorio {
   Cargo: string,
   Departamento: string,
   Declaracao: boolean,
-  DataHora: string
+  DataHora: string,
+  Acertos: string
 }

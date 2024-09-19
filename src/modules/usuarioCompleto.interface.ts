@@ -3,6 +3,7 @@ export interface ITreinamentoCompleto {
   CargoID: number;
   DepartamentoID: number;
   Declaracao: boolean;
+  Acertos: number;
 }
 
 export interface IColaborador {

@@ -1,0 +1,86 @@
+.questionario {
+  width: 100%;
+  padding: 5em 0 2em 0;
+  background-color: #f2f2f2;
+
+  .cabecalho {
+    width: 100%;
+    padding: .5em 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background-color: #fff;
+    border-bottom: 1px solid #333;
+    background-color: #ededed;
+
+    img {
+      width: 125px;
+      cursor: pointer;
+    }
+  }
+
+  .formularioQuestionario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .questoes {
+
+      .questao {
+        margin-bottom: 1em;
+        padding: 10px;
+        background-color: #fff;
+        border: 2px solid transparent;
+        border-radius: 5px;
+
+        h3 {
+          font-size: 20px;
+          font-weight: 600;
+          color: #01803a;
+        }
+
+        ul {
+          list-style: none;
+          padding-left: 0;
+
+          li {
+            margin-bottom: 1em;
+
+            label {
+              cursor: pointer;
+
+              input {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+      .unanswered {
+        border: 2px solid red;
+      }
+
+      .botaoSubmit {
+        text-align: center;
+
+        button {
+          width: 100%;
+          max-width: 250px;
+          padding: .25em;
+          border: none;
+          border-radius: 5px;
+          background-color: #333;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

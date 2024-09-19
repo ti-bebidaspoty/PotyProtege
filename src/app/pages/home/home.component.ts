@@ -50,20 +50,18 @@ export class HomeComponent implements OnInit {
     if (this.formularioTreinamento.valid) {
       const colaborador: any = this.colaboradores.find(item => item.ColaboradorID == this.formularioTreinamento.get('Colaborador')?.value);
 
-      const treinamentoEnviar: ITreinamentoCompleto = {
-        ColaboradorID: colaborador.ColaboradorID,
-        DepartamentoID: colaborador.DepartamentoID,
-        CargoID: colaborador.CargoID,
-        Declaracao: true
-      }
+      sessionStorage.setItem('ColaboradorID', colaborador.ColaboradorID);
+      sessionStorage.setItem('DepartamentoID', colaborador.DepartamentoID);
+      sessionStorage.setItem('CargoID', colaborador.CargoID);
 
-      const serviceCall = this.treinamentoCompletoService.gravarTreinamento(treinamentoEnviar);
+      this.router.navigate(['/Questionario']);
+
+      /*const serviceCall = this.treinamentoCompletoService.gravarTreinamento(treinamentoEnviar);
 
       serviceCall.pipe(
         tap(() => {
           this.carregandoAtivo = false;
-          alert('Parabéns! Você concluiu com sucesso o treinamento de segurança.');
-          document.location.reload();
+          this.router.navigate(['/Qustionario']);
         }),
         catchError((error: any) => {
           this.carregandoAtivo = false;
@@ -71,9 +69,9 @@ export class HomeComponent implements OnInit {
           alert('Ocorreu um erro ao processar a finalização do treinamento.');
           return of([]);
         })
-      ).subscribe();
+      ).subscribe();*/
     } else {
-      alert("Preencha todos os campos para enviar o formulário e completar o treinamento de segurança!");
+      alert("Preencha todos os campos para poder responder o questionário!");
     }
   }
 

@@ -1,0 +1,29 @@
+<section class="questionario">
+  <div class="cabecalho">
+    <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
+  </div>
+
+  <div class="formularioQuestionario">
+    <p>Responda o questionário usando seus conhecimentos e o que aprendeu no treinamento anterior:</p>
+
+    <div class="questoes">
+      <div *ngFor="let questao of questoes" [ngClass]="{'unanswered': !questao.isAnswered && submited}" class="questao">
+        <h3>{{ questao.ID }}) {{ questao.Questao }}</h3>
+        <ul>
+          <li *ngFor="let opcao of questao.Opcoes">
+            <label>
+              <input type="radio" [value]="opcao" [id]="'questao' + questao.ID + '_' + opcao" name="questao{{ questao.ID }}"
+                (change)="onAnswerSelect(questao.ID, opcao)">
+              {{ opcao }}
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="botaoSubmit">
+        <button (click)="onSubmit()">Enviar Respostas</button>
+      </div>
+    </div>
+  </div>
+
+</section>
