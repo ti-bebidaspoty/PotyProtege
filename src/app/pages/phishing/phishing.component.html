@@ -1,0 +1,90 @@
+<section class="relatorio">
+  <div class="cabecalho">
+    <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
+
+    <i class="fa fa-bars" (click)="mudarMenuAtivo()"></i>
+
+    <div class="menu" *ngIf="menuAtivo">
+      <p routerLink="/RelatoriosTreinamento">Relatórios Treinamento</p>
+      <p routerLink="/Emails">Emails</p>
+      <p routerLink="/Phishing">Phishing</p>
+    </div>
+  </div>
+
+  <label>
+    Relatório de Phishings
+    <button routerLink="/Phishing/Novo">
+      <i class="fa fa-plus"></i>
+      Novo
+    </button>
+  </label>
+
+  <div class="campoPesquisa" *ngIf="relatorio.length > 0">
+    <input type="text" placeholder="Pesquise por Usuário ou Data..." [(ngModel)]="campoPesquisa"
+      (keydown.enter)="pesquisar()">
+
+    <button (click)="pesquisar()" id="botaoPesquisar">
+      <i class="fa fa-search"></i>
+      Pesquisar
+    </button>
+
+    <button id="botaoLimparPesquisa" (click)="limparPesquisa()" *ngIf="relatorioFiltrado.length > 0">
+      <i class="fa fa-trash"></i>
+    </button>
+  </div>
+
+  <div class="tabelaRelatorio">
+    <div class="tabela" *ngIf="campanhasUnicas.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>Campanha</th>
+            <th>Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let campanha of campanhasUnicas">
+            <tr>
+              <td (click)="toggleCampanha(campanha); $event.preventDefault()">
+                <a href="#">
+                  {{ campanha }}
+                </a>
+              </td>
+              <td>
+                <i class="fa fa-trash" (click)="excluirCampanha(campanha)"></i>
+              </td>
+            </tr>
+            <tr *ngIf="campanhaExpandida === campanha">
+              <td colspan="3">
+                <ul>
+                  <li *ngFor="let usuario of getUsuariosPorCampanha(campanha)">
+                    <strong>Email:</strong> {{ usuario.Email }} |
+                    <strong>Data:</strong> {{ formatarDataBrasileira(usuario.DataHora) }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer *ngIf="relatorio.length > 0">
+    <pagination-controls previousLabel="" nextLabel="" (pageChange)="aoMudarDadosTabela($event)"></pagination-controls>
+
+    <div class="exportacao">
+      <select [(ngModel)]="valorExportar">
+        <option value="XLSX">XLSX</option>
+        <option value="PDF">PDF</option>
+        <option value="CSV">CSV</option>
+      </select>
+
+      <button (click)="exportarConteudo()">
+        <i class="fa fa-download"></i>
+      </button>
+    </div>
+  </footer>
+</section>
+
+

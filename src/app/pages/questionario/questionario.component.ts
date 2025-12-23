@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IQuestao, Questoes } from 'src/modules/questionario.interface';
 import { TreinamentoCompletoService } from 'src/services/usuarioCompleto.service';
 
-import { catchError, firstValueFrom, of, tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
+import { IColaborador } from 'src/modules/usuarioCompleto.interface';
 import { ITreinamentoCompleto } from 'src/modules/usuarioCompleto.interface';
 import { Router } from '@angular/router';
 
@@ -17,12 +18,16 @@ export class QuestionarioComponent implements OnInit {
   score: number = 0;
   submited: boolean = false;
 
+  protected colaboradores: IColaborador[] = [];
+  protected colaboradorSelecionado: string = '';
+
   constructor(
     private treinamentoCompletoService: TreinamentoCompletoService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.colaboradores = await this.treinamentoCompletoService.buscarColaboradores().toPromise() || [];
   }
 
   checkAnswers(): void {
@@ -49,13 +54,15 @@ export class QuestionarioComponent implements OnInit {
   onSubmit(): void {
     this.submited = true;
 
-    if (this.checkIfAllAnswered()) {
+    if (this.checkIfAllAnswered() && this.colaboradorSelecionado != '') {
       this.calculateScore();
 
+      const colaborador: any = this.colaboradores.find(item => item.ColaboradorID == Number(this.colaboradorSelecionado));
+
       const treinamentoEnviar: ITreinamentoCompleto = {
-        ColaboradorID: Number(sessionStorage.getItem('ColaboradorID'))?? '',
-        CargoID: Number(sessionStorage.getItem('CargoID'))?? '',
-        DepartamentoID: Number(sessionStorage.getItem('DepartamentoID'))?? '',
+        ColaboradorID: colaborador.ColaboradorID,
+        CargoID: colaborador.CargoID,
+        DepartamentoID: colaborador.DepartamentoID,
         Declaracao: true,
         Acertos: this.score
       }
@@ -69,22 +76,22 @@ export class QuestionarioComponent implements OnInit {
           this.router.navigate(['/Home']);
         }),
         catchError((error: any) => {
-          console.error('Erro ao enviar painel:', error);
-          alert('Ocorreu um erro ao processar a finalização do treinamento.');
+          console.error('Erro ao enviar painel:', error.error.Resposta);
+          if (error.error.Resposta == 'Você já realizou o treinamento de segurança!') alert(error.error.Resposta);
+          else alert('Ocorreu um erro ao processar a finalização do treinamento.');
+          this.router.navigate(['/Home']);
           return of([]);
         })
       ).subscribe();
     } else {
-      alert('Por favor, responda todas as questões.');
+      alert('Preencha todos os campos para enviar o formulário.');
     }
   }
 
   calculateScore(): void {
     this.score = 0;
     this.questoes.forEach(questao => {
-      if (this.userAnswers[Number(questao.ID)] === questao.Resposta) {
-        this.score++;
-      }
+      if (this.userAnswers[Number(questao.ID)] === questao.Resposta) this.score++;
     });
   }
 }

@@ -6,8 +6,7 @@ section {
     width: 100%;
     padding: 2em;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
     background: linear-gradient(to right, #00a74a, #059747);
     color: #fff;
@@ -35,7 +34,7 @@ section {
 
     img {
       margin-top: 1em;
-      width: 250px;
+      width: 200px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
@@ -47,6 +46,12 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    h3 {
+      margin-top: 1em;
+      font-weight: 600;
+      text-decoration: underline;
+    }
 
     .caixa {
       width: 100%;
@@ -75,8 +80,6 @@ section {
         font-size: 0.95rem;
         color: #555;
         line-height: 1.6;
-        text-align: justify;
-        padding: 0 1em;
       }
 
       .conteudo {
@@ -116,6 +119,16 @@ section {
           width: 20px;
           height: 20px;
           cursor: pointer;
+        }
+      }
+
+      .video {
+        width: 100%;
+        text-align: center;
+
+        video {
+          width: 500px;
+          height: 250px;
         }
       }
     }

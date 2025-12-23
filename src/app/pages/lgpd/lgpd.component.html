@@ -1,0 +1,737 @@
+<section>
+  <app-cabecalho-treinamento></app-cabecalho-treinamento>
+
+  <form class="treinamento" [formGroup]="formularioTreinamento" #formDir="ngForm">
+    <h3>I - FUNDAMENTOS DA LGPD</h3>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico1')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico1')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico1')?.invalid && formDir.submitted? 'red': '#333'">Princípios da LGPD</label>
+
+      <p>
+        • A LGPD é baseada em princípios que orientam o tratamento adequado de dados pessoais,
+        garantindo segurança e transparência. Vamos detalhar cada princípio com exemplos práticos a seguir:
+      </p>
+
+      <p>
+        •1° Finalidade: O tratamento de dados deve ter um propósito específico e legítimo.
+        Exemplo: Ao solicitar dados de clientes para criar um cadastro, pode ser exclusivamente a
+        emissão de notas fiscais e envio de produtos. O cliente deve ser informado especificamente,
+        e a empresa não pode usar os dados para outra finalidade, como vendê-los a terceiros sem
+        autorização.
+      </p>
+
+      <p>
+        •2° Adequação: O uso dos dados deve ser adequado a informações específicas.
+        Exemplo: Se os dados forem coletados para a entrega de um produto, não seria adequado
+        utilizá-los para enviar material publicitário sem a assinatura do cliente.
+      </p>
+
+      <p>
+        •3° Necessidade: Apenas os dados necessários devem ser encontrados.
+        Exemplo: Se uma empresa de e-commerce solicita o endereço de entrega de um cliente, não
+        faz sentido pedir informações como CPF se não for necessário para a operação.
+      </p>
+
+      <p>
+        •4° Acesso Livre: O titular deve poder acessar seus dados a qualquer momento.
+        Exemplo: Um colaborador pode solicitar à empresa uma cópia de seus dados no sistema de
+        recursos humanos para verificar suas informações pessoais.
+      </p>
+
+      <p>
+        •5° Qualidade dos Dados: Os dados devem ser precisos e atualizados.
+        Exemplo: Se uma empresa armazena dados desatualizados de um cliente, como um
+        endereço antigo, ela pode acabar enviando produtos para o local errado.
+      </p>
+
+      <p>
+        •6° Transparência: A empresa deve ser clara sobre como os dados serão utilizados.
+        Exemplo: Quando um site coleta cookies, ele deve informar claramente ao usuário como
+        esses cookies serão usados (para personalização, análise de navegação, etc.).
+      </p>
+
+      <p>
+        •7° Segurança: Medidas de proteção devem ser adotadas para evitar acessos indevidos.
+        Exemplo: Implementar criptografia em sistemas de pagamento para proteger os dados do
+        cartão de crédito dos clientes.
+      </p>
+
+      <p>
+        •8° Prevenção: A empresa deve adotar práticas para evitar incidentes que prejudiquem os
+        titulares dos dados.
+        Exemplo: Realizar treinamentos regulares sobre segurança da informação para
+        colaboradores que manuseiam dados pessoais.
+      </p>
+
+      <p>
+        •9° Não Discriminação: O tratamento de dados não pode ser feito de forma discriminatória.
+        Exemplo: Uma empresa de recrutamento não pode excluir candidatos com base em sua raça
+        ou gênero usando informações coletadas em currículos.
+      </p>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico1">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico2')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico2')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico2')?.invalid && formDir.submitted? 'red': '#333'">Figuras da LGPD</label>
+
+      <p>
+        • A LGPD define papéis importantes no tratamento de dados pessoais. Cada figura tem
+        responsabilidades específicas:
+      </p>
+
+      <p>
+        •1° Titular de Dados: É a pessoa física a quem os dados pertencem.
+        Exemplo: Um cliente que forneceu seu endereço e CPF para uma empresa é o titular dos
+        dados.
+      </p>
+
+      <p>
+        •2° Controlador: Pessoa ou organização que toma as decisões sobre o tratamento dos dados.
+        Exemplo: Uma empresa que coleta dados de clientes para processar pedidos de compra é
+        uma controladora dos dados (Bebidas Poty).
+      </p>
+
+      <p>
+        •3° Operador: Pessoa ou organização que realiza o tratamento dos dados em nome do
+        controlador.
+        Exemplo: O Colaborador da empresa (R.H) que processa uma folha de pagamento de
+        funcionários.
+      </p>
+
+      <p>
+        •4° Encarregado de Dados (DPO): Profissional responsável por garantir a conformidade com
+        a LGPD, operando como ponto de contato entre a empresa e os titulares de dados.
+        Exemplo: O DPO que coordena as práticas de proteção de dados e responde às dúvidas dos
+        clientes e stakeholders sobre seus direitos.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico2">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico3')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico3')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico3')?.invalid && formDir.submitted? 'red': '#333'">Titular de Dados e Seus Direitos</label>
+
+      <p>
+        • A LGPD assegura uma série de direitos aos titulares de dados, garantindo que eles tenham controle
+        sobre suas informações pessoais:
+      </p>
+
+      <p>
+        •1° Acesso: O titular pode solicitar uma cópia de seus dados.
+        Exemplo: Um colaborador pode solicitar ao departamento de RH uma cópia do seu registro
+        de ponto.
+      </p>
+
+      <p>
+        •2° Correção: O titular pode corrigir dados incompletos ou incorretos.
+        Exemplo: Um cliente pode solicitar a correção do seu endereço em uma loja online para
+        evitar entregas incorretas.
+      </p>
+
+      <p>
+        •3° Anonimização, Bloqueio ou Eliminação: O titular pode solicitar a eliminação de dados
+        que não sejam mais necessários ou que tenham sido coletados de forma irregular.
+        Exemplo: Um ex-cliente pode pedir que seus dados sejam removidos de um banco de dados
+        de marketing após a rescisão do contrato.
+      </p>
+
+      <p>
+        •4° Portabilidade: O titular pode solicitar que seus dados sejam transferidos para outra
+        empresa.
+        Exemplo: Um cliente de um provedor de internet pode solicitar a transferência de seus
+        dados para uma nova operadora.
+      </p>
+
+      <p>
+        •5° Revogação do Consentimento: O titular pode cancelar sua assinatura para o uso de seus
+        dados a qualquer momento.
+        Exemplo: Um cliente pode cancelar sua inscrição em um newsletter a qualquer momento,
+        removendo o consentimento para o envio de e-mails.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico3">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico4')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico4')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico4')?.invalid && formDir.submitted? 'red': '#333'">Controlador e Suas Responsabilidades</label>
+
+      <p>
+        • O controlador deve garantir que o tratamento de dados siga os princípios da LGPD a seguir:
+      </p>
+
+      <p>
+        •1° Base Legal: O controlador deve garantir que haja uma base legal para o tratamento de
+        dados.
+        Exemplo: Uma empresa pode tratar dados pessoais de colaboradores para cumprimento de
+        obrigações trabalhistas e fiscais.
+      </p>
+
+      <p>
+        •2° Transparência e Informação: O controlador deve informar claramente ao titular sobre o
+        uso de seus dados.
+        Exemplo: Uma empresa que coleta dados para criar um cadastro deve informar como os
+        dados serão usados e se serão compartilhados com terceiros.
+      </p>
+
+      <p>
+        •3° Segurança dos Dados: O controlador deve implementar medidas de segurança para
+        proteger os dados pessoais.
+        Exemplo: Adotar criptografia e controle de acesso em sistemas de dados de clientes.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico4">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico5')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico5')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico5')?.invalid && formDir.submitted? 'red': '#333'">Operador e Suas Responsabilidades</label>
+
+      <p>
+        • O operador, por sua vez, deve seguir as instruções do controlador e garantir a segurança dos dados
+        durante o tratamento:
+      </p>
+
+      <p>
+        •1° Seguir as Instruções do Controlador: O operador deve tratar os dados de acordo com as
+        orientações do controlador.
+        Exemplo: Uma empresa de processamento de dados de folha de pagamento deve seguir as
+        diretrizes do controlador sobre como e quando processar esses dados.
+      </p>
+
+      <p>
+        •2° Garantir Segurança: O operador também deve adotar medidas de segurança.
+        Exemplo: Um operador que administra um sistema de nuvem deve garantir que os dados
+        armazenados estejam protegidos contra acesso não autorizado.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico5">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico6')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico6')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico6')?.invalid && formDir.submitted? 'red': '#333'">Exemplos de Departamentos Operadores</label>
+
+      <p>
+        • Diversos departamentos dentro de uma empresa podem atuar como operadores no tratamento de
+        dados:
+      </p>
+
+      <p>
+        • Recursos Humanos (RH): Trata dados dos colaboradores, como evolução, histórico
+        profissional e informações de contato.
+        Exemplo: O RH processa os dados para a gestão de folha de pagamento e benefícios.
+      </p>
+
+      <p>
+        •1° Tecnologia da Informação (TI): Administra os sistemas de TI que armazenam dados
+        pessoais.
+        Exemplo: O departamento de TI gerencia o sistema de segurança que protege os dados dos
+        clientes.
+      </p>
+
+      <p>
+        •2° Marketing: Utiliza dados de clientes para campanhas e análise de comportamento de
+        consumo.
+        Exemplo: O departamento de marketing utiliza dados de clientes para enviar e-mails
+        promocionais.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico6">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Video1')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Video1')">
+      <label
+        [style.color]="formularioTreinamento.get('Video1')?.invalid && formDir.submitted? 'red': '#333'">Videoaula do Módulo I</label>
+
+        <div class="video">
+          <video controls>
+            <source src="/assets/videos/MODULO I - Bebidas Poty..mp4" type="video/mp4">
+          </video>
+        </div>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Video1">
+      </div>
+    </div>
+
+    <h3>II - O CICLO DE VIDA DOS DADOS PESSOAIS</h3>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico7')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico7')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico7')?.invalid && formDir.submitted? 'red': '#333'">O Que é o Ciclo de Vida dos Dados</label>
+
+      <p>
+        • O ciclo de vida dos dados compreende todas as fases pelas quais os dados pessoais passam, desde
+        a coleta até a eliminação:
+      </p>
+
+      <p>
+        •1° Coleta: Os dados são adquiridos de diversas formas, como preenchimento de formulários
+        ou assinaturas de contratos.
+      </p>
+
+      <p>
+        •2° Armazenamento: Os dados são armazenados de forma segura, seja em servidores digitais
+        ou arquivos físicos.
+      </p>
+
+      <p>
+        •3° Uso: Os dados são utilizados para especificações específicas, como análise de mercado ou
+        cumprimento de contratos.
+      </p>
+
+      <p>
+        •4° Compartilhamento: Os dados podem ser compartilhados com terceiros, como
+        fornecedores ou parceiros de negócio, mediante autorização ou por obrigações legais.
+      </p>
+
+      <p>
+        •5° Eliminação: Quando os dados não são mais necessários, devem ser excluídos de forma
+        segura para evitar acessos indevidos.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico7">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico8')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico8')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico8')?.invalid && formDir.submitted? 'red': '#333'">Coleta e Formas de Coleta</label>
+
+      <p>
+        • Os dados pessoais podem ser coletados de diversas maneiras, sempre de forma legal e transparente:
+      </p>
+
+      <p>
+        •1° Formulários Online: Usados para coleta de dados de clientes em sites ou aplicativos.
+        Exemplo: Um cliente preencha seus dados pessoais para realizar uma compra online.
+      </p>
+
+      <p>
+        •2° Contratos Físicos ou Digitais: Utilizados para firmar acordos entre a empresa e o cliente
+        ou colaborador.
+        Exemplo: Ao ser contratado, o colaborador fornece dados pessoais como CPF e endereço
+        para elaboração do contrato.
+      </p>
+
+      <p>
+        •3° Cookies e Ferramentas de Rastreamento: Coleta automática de informações sobre a
+        navegação dos usuários nos sites.
+        Exemplo: Um e-commerce pode coletar dados sobre as páginas que o cliente visitou para
+        oferecer produtos relacionados.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico8">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico9')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico9')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico9')?.invalid && formDir.submitted? 'red': '#333'">Armazenamento e Formas de Armazenamento</label>
+
+      <p>
+        • Após a coleta, os dados precisam ser armazenados de forma segura, respeitando as diretrizes da
+        LGPD:
+      </p>
+
+      <p>
+        •1° Servidores Internos: Dados armazenados localmente em servidores da empresa.
+        Exemplo: Dados de colaboradores e clientes são mantidos em servidores internos,
+        protegidos por firewalls.
+      </p>
+
+      <p>
+        •2° Cloud Computing (Computação em Nuvem): Dados armazenados em servidores
+        externos, gerenciados por terceiros.
+        Exemplo: Uma empresa pode utilizar um serviço de armazenamento na nuvem para salvar
+        dados de backup.
+      </p>
+
+      <p>
+        •3° Arquivos Físicos: Documentos em papel devem ser armazenados em locais seguros.
+        Exemplo: Contratos financeiros de colaboradores salvos em armários com tranca,
+        acessíveis apenas por pessoas autorizadas.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico9">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico10')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico10')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico10')?.invalid && formDir.submitted? 'red': '#333'">Formas de Utilização/Compartilhamento</label>
+
+      <p>
+        • Os dados podem ser utilizados e compartilhados de diversas maneiras:
+      </p>
+
+      <p>
+        •1° Cumprimento de Obrigações Contratuais: Uso de dados pessoais para fornecer um
+        serviço contratado.
+        Exemplo: Uma empresa utiliza os dados de um cliente para fornecer o produto ou serviço
+        que ele adquiriu, como entrega de mercadorias ou processamento de um pagamento.
+      </p>
+
+      <p>
+        •2° Análise de Dados Interna: Os dados podem ser usados para gerar relatórios de
+        desempenho ou análise de mercado.
+        Exemplo: O departamento de marketing pode utilizar dados de clientes para analisar o
+        comportamento de compra e planejar campanhas promocionais.
+      </p>
+
+      <p>
+        •3° Compartilhamento com Terceiros: Os dados podem ser compartilhados com empresas
+        parceiras, sempre com base legal e transparência.
+        Exemplo: Uma empresa de logística que processa entregas pode ter acesso aos dados dos
+        clientes para efetuar a entrega de produtos comprados em uma loja online.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico10">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico11')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico11')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico11')?.invalid && formDir.submitted? 'red': '#333'">Eliminação dos Dados</label>
+
+      <p>
+        • A eliminação dos dados deverá ocorrer quando eles não forem mais necessários ou quando o titular
+        solicitar, desde que não haja uma base legal que justifique a retenção. Existem diversas formas
+        para eliminar os dados de maneira segura:
+      </p>
+
+      <p>
+        •1° Destruição de Arquivos Físicos: Documentos em papel devem ser destruídos, por
+        exemplo, utilizando fragmentadoras de papel.
+        Exemplo: Contratos físicos que já expiraram e não precisam ser guardados devem ser
+        destruídos para garantir que as informações não sejam acessadas indevidamente.
+      </p>
+
+      <p>
+        •2° Exclusão de Dados Digitais: Os dados armazenados em servidores ou sistemas digitais
+        devem ser excluídos permanentemente.
+        Exemplo: Após a finalização de um contrato, os dados de clientes ou fornecedores que não
+        são mais necessários serão excluídos dos sistemas de TI.
+      </p>
+
+      <p>
+        •3° Eliminação de Dispositivos: Quando dispositivos que contêm dados, como discos rígidos,
+        precisam ser descartados, devem ser adotados procedimentos seguros para garantir que os
+        dados não possam ser recuperados.
+        Exemplo: Ao substituir computadores antigos, a empresa deve garantir que os discos rígidos
+        sejam excluídos de maneira segura, impedindo que os dados contidos neles sejam
+        acessados.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico11">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Video2')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Video2')">
+      <label
+        [style.color]="formularioTreinamento.get('Video2')?.invalid && formDir.submitted? 'red': '#333'">Videoaula do Módulo II</label>
+
+        <div class="video">
+          <video controls>
+            <source src="/assets/videos/MODULO II - Bebidas Poty..mp4" type="video/mp4">
+          </video>
+        </div>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Video2">
+      </div>
+    </div>
+
+
+    <h3>III - POLÍTICAS E BOAS PRÁTICAS DE PROTEÇÃO DE DADOS</h3>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico12')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico12')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico12')?.invalid && formDir.submitted? 'red': '#333'">Políticas Criadas</label>
+
+      <p>
+        • As políticas da empresa são essenciais para o tratamento de dados pessoais e garantir a
+        conformidade com a LGPD. Algumas das políticas mais relevantes incluem:
+      </p>
+
+      <p>
+        •1° Política de Segurança da Informação: Esta política descreve os procedimentos de
+        segurança adotados pela empresa para proteger os dados contra acessos não autorizados,
+        vazamentos ou perdas.
+        Exemplo: Definir regras para uso de senhas, criptografia de dados e autenticação de
+        usuários em sistemas internos.
+      </p>
+
+      <p>
+        •2° Política de Privacidade: Documento que informa aos titulares como os dados pessoais são
+        coletados, usados, compartilhados e protegidos pela empresa.
+        Exemplo: Uma política de privacidade publicada no site da empresa, descrevendo como os
+        dados dos visitantes serão tratados.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico12">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico13')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico13')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico13')?.invalid && formDir.submitted? 'red': '#333'">Boas Práticas de Proteção de Dados</label>
+
+      <p>
+        • Adotar boas práticas de proteção de dados é fundamental para garantir a segurança e o
+        cumprimento das exigências da LGPD. Algumas dessas práticas incluem:
+      </p>
+
+      <p>
+        •1° Minimização de Dados: Coletar apenas os dados necessários para cada finalidade.
+        Exemplo: Pedir apenas nome e e-mail de um cliente ao cadastrar-se para um newsletter, ao
+        invés de solicitar informações como endereço ou CPF.
+      </p>
+
+      <p>
+        •2° Gestão de Senhas: Utilizar senhas fortes e seguras, renovando-as periodicamente.
+        Exemplo: Implementar uma política de troca obrigatória de senhas a cada três meses,
+        exigindo combinações complexas de caracteres.
+      </p>
+
+      <p>
+        •3° Backup Regular de Dados: Manter backups regulares dos dados críticos, garantindo a
+        recuperação em caso ocorra uma falha nos sistemas ou incidente de segurança.
+        Exemplo: Realizar backups diários automáticos dos sistemas de TI da empresa para garantir
+        que dados importantes possam ser restaurados em caso de perda.
+      </p>
+
+      <p>
+        •4° Treinamento Contínuo dos Colaboradores: Oferecer treinamentos periódicos sobre
+        proteção de dados e segurança da informação para que todos os colaboradores conheçam
+        suas responsabilidades e saibam como evitar incidentes.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico13">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico14')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico14')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico14')?.invalid && formDir.submitted? 'red': '#333'">Encarregado de Dados (DPO)</label>
+
+      <p>
+        • O Encarregado de Dados, também conhecido como DPO (Data Protection Officer), é o profissional
+        responsável por garantir a conformidade da empresa com a LGPD e servir como ponto de contato
+        entre a empresa, os titulares de dados e as autoridades de supervisão. As responsabilidades do DPO incluem, mas não se limita a:
+      </p>
+
+      <p>
+        •1° Orientar a Empresa sobre Conformidade: O DPO deve garantir que a empresa siga todas
+        as diretrizes da LGPD, implementando políticas e práticas adequadas.
+        Exemplo: O DPO aconselha a empresa sobre como proteger dados de clientes ao introduzir
+        novas práticas e treinamento.
+      </p>
+
+      <p>
+        •2° Atender às Solicitações dos Titulares de Dados: O DPO deve ser o ponto de contato para
+        que os titulares possam exercer seus direitos, como solicitar acesso aos seus dados ou
+        revogar consentimentos.
+        Exemplo: Um cliente deseja saber que dados pessoais a empresa possui sobre ele e solicitar
+        essa informação ao DPO.
+      </p>
+
+      <p>
+        •3° Backup Regular de Dados: Manter backups regulares dos dados críticos, garantindo a
+        recuperação em caso ocorra uma falha nos sistemas ou incidente de segurança.
+        Exemplo: Realizar backups diários automáticos dos sistemas de TI da empresa para garantir
+        que dados importantes possam ser restaurados em caso de perda.
+      </p>
+
+      <p>
+        •4° Comunicar-se com a Autoridade Nacional de Proteção de Dados (ANPD) : O DPO
+        deve relatar incidentes de segurança e vazamento de dados à ANPD, além de responder a
+        eventuais investigações.
+        Exemplo: No caso de vazamento de dados pessoais, o DPO notifica a ANPD dentro do
+        prazo legal e auxilia na investigação.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico14">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Topico15')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Topico15')">
+      <label
+        [style.color]="formularioTreinamento.get('Topico15')?.invalid && formDir.submitted? 'red': '#333'">Vazamento de Dados</label>
+
+      <p>
+        • O vazamento de dados é uma das maiores preocupações quando se trata de proteção de
+        informações, ocorrendo quando dados pessoais são acessados, divulgados ou usados por terceiros
+        sem a devida autorização. As causas mais comuns de vazamentos incluem ataques cibernéticos
+        (como vírus ou malware), falhas de segurança e erros humanos. Mesmo pequenas falhas no
+        processo podem deixar dados expostos e vulneráveis, colocando a empresa e os titulares em risco:
+      </p>
+
+      <p>
+        •1° Notifique imediatamente o responsável pelo setor de TI ou o Encarregado de Dados
+        (DPO) :A identificação precoce de um possível vazamento é essencial para agir
+        rapidamente. Assim que você perceber qualquer anomalia, como um comportamento
+        estranho no sistema, arquivos inacessíveis, ou possíveis de exposição de dados, informe
+        imediatamente a equipe de TI ou o DPO.
+        Exemplo : Se você percebeu que um vírus pode ter infectado seu computador, causando
+        comportamentos anormais ou notificações de segurança, reporte isso sem demora.
+      </p>
+
+      <p>
+        •2° Interrompa o acesso ao sistema ou aos dados comprometidos :Se possível, pare de usar
+        o sistema que está comprometido e bloqueie o acesso para evitar maiores danos. Isso
+        impede que a vulnerabilidade continue sendo explorada e que mais dados sejam expostos.
+        Exemplo : Ao notar que um arquivo sensível foi acessado por terceiros, feche
+        imediatamente o acesso e desligue o sistema até que o problema seja investigado.
+      </p>
+
+      <p>
+        •3° Não tente resolver o problema por conta própria :Nunca tente corrigir ou eliminar os
+        dados comprometidos sem orientação do setor de TI ou do DPO. Qualquer ação incorreta
+        pode piorar a situação e dificultar a identificação da origem do vazamento.
+        Exemplo : Se houver suspeita de que um vírus esteja afetando o sistema, evite excluir
+        arquivos ou realizar alterações sem suporte técnico especializado.
+      </p>
+
+      <p>
+        •4° Colete evidências e forneça informações fornecidas :Anote todos os detalhes que podem
+        ajudar na investigação do incidente: quando o problema foi identificado, que sistemas
+        afetados foram, houve comportamento suspeito de algum e-mail ou arquivo. Quanto mais
+        informações forem fornecidas, mais eficiente será a resposta da equipe de segurança.
+        Exemplo : Se você recebeu um e-mail suspeito antes do incidente, salve o e-mail e anote o
+        horário em que ele foi aberto.
+      </p>
+
+      <p>
+        •5° Siga as instruções de contenção fornecidas pela equipe de segurança: Após relatar o
+        problema, siga rigorosamente as instruções que foram passadas pela equipe de segurança
+        ou pelo DPO. Isso pode incluir medidas como alterar senhas, desconectar dispositivos da
+        rede ou executar ferramentas de segurança para varredura.
+        Exemplo : Se uma equipe de TI solicitar que todos os sistemas estejam desconectados da
+        internet para evitar a propagação de um vírus, execute essa ação imediatamente.
+      </p>
+
+      <p>
+        •6° Participe de treinamentos e atualizações de segurança regularmente: Para prevenir
+        futuros incidentes, é fundamental que todos os colaboradores estejam atualizados com as
+        melhores práticas de segurança da informação. Participe ativamente de treinamentos e
+        campanhas de conscientização oferecidas pela empresa.
+        Exemplo : Treinamentos de phishing podem ajudar a identificar e evitar e-mails
+        fraudulentos que muitas vezes são porta de entrada para ataques cibernéticos.
+      </p>
+
+      <p>
+        • Exemplos de situações que podem indicar vazamento de dados:
+      </p>
+
+      <p>
+        •1° Ataque de vírus/malware : computadores lentos, travamentos frequentes, janelas pop-up
+        inesperadas ou mensagens de erro podem indicar que um vírus está comprometendo o
+        sistema e possivelmente expondo dados.
+      </p>
+
+      <p>
+        •2° Falha de segurança no processo interno : Processos que expõem dados de maneiras
+        inconvenientes, como compartilhamento de informações confidenciais por e-mail sem criptografia,
+        ou permissões de acesso amplas para colaboradores, podem abrir brechas para vazamentos.
+      </p>
+
+      <p>
+        •3° Erros humanos : Envio de e-mails com informações previstas para destinos errados ou descarte
+        inadequado de documentos financeiros que contenham dados sensíveis também podem resultar em
+        vazamento.
+      </p>
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Topico15">
+      </div>
+    </div>
+
+    <div class="caixa"
+      [style.border]="formularioTreinamento.get('Video3')?.invalid && formDir.submitted? '1px solid red': '1px solid transparent'"
+      (click)="mudarTopico('Video3')">
+      <label
+        [style.color]="formularioTreinamento.get('Video3')?.invalid && formDir.submitted? 'red': '#333'">Videoaula do Módulo III</label>
+
+        <div class="video">
+          <video controls>
+            <source src="/assets/videos/MODULO III - Bebidas PoTy..mp4" type="video/mp4">
+          </video>
+        </div>
+
+      <div class="checkbox">
+        <p>Estou ciente</p>
+        <input type="checkbox" formControlName="Video3">
+      </div>
+    </div>
+
+    <button (click)="enviarFormulario()">
+      Questionário
+      <i class="fa fa-arrow-right"></i>
+    </button>
+  </form>
+</section>
+
+<app-rodape></app-rodape>

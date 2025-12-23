@@ -1,0 +1,128 @@
+<section class="relatorio">
+  <div class="cabecalho">
+    <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
+
+    <i class="fa fa-bars" (click)="mudarMenuAtivo()"></i>
+
+    <div class="menu" *ngIf="menuAtivo">
+      <p routerLink="/RelatoriosTreinamento">Relatórios Treinamento</p>
+      <p routerLink="/Emails">Emails</p>
+      <p routerLink="/Phishing">Phishing</p>
+    </div>
+  </div>
+
+  <label>Criar Novo Phishing</label>
+
+  <img src="/assets/images/iconeCarregando.gif" alt="" *ngIf="carregandoAtivo">
+
+  <form [formGroup]="formularioPhishing" #formDir="ngForm" *ngIf="!carregandoAtivo">
+    <div class="campo">
+      <label>Campanha</label>
+      <input type="text" formControlName="Campanha"
+        [style.border]="formularioPhishing.get('Campanha')?.invalid && formDir.submitted? '1px solid red': '1px solid #828282'">
+    </div>
+
+    <div class="camposSuperiores">
+      <div class="campo">
+        <label>Email de Origem</label>
+        <input type="text" formControlName="EmailOrigem"
+          [style.border]="formularioPhishing.get('EmailOrigem')?.invalid && formDir.submitted? '1px solid red': '1px solid #828282'">
+      </div>
+
+      <div class="campo">
+        <label>Senha do Email</label>
+        <input type="text" formControlName="SenhalOrigem"
+          [style.border]="formularioPhishing.get('SenhalOrigem')?.invalid && formDir.submitted? '1px solid red': '1px solid #828282'">
+      </div>
+
+      <div class="campo">
+        <label>Nome do Email</label>
+        <input type="text" formControlName="NomeOrigem"
+          [style.border]="formularioPhishing.get('NomeOrigem')?.invalid && formDir.submitted? '1px solid red': '1px solid #828282'">
+      </div>
+
+      <div class="campo">
+        <label>Host</label>
+        <input type="text" formControlName="Host"
+          [style.border]="formularioPhishing.get('Host')?.invalid && formDir.submitted? '1px solid red': '1px solid #828282'">
+      </div>
+
+      <div class="campo">
+        <label>Porta</label>
+        <input type="number" formControlName="Porta">
+      </div>
+
+      <div class="campo">
+        <label>Assunto do Email</label>
+        <input type="text" formControlName="AssuntoEmail"
+          [style.border]="formularioPhishing.get('AssuntoEmail')?.invalid && formDir.submitted? '1px solid red': '1px solid #828282'">
+      </div>
+
+      <div class="campo">
+        <label>HTML</label>
+        <textarea formControlName="HTML"
+          [style.border]="formularioPhishing.get('HTML')?.invalid && formDir.submitted? '1px solid red': '1px solid #828282'"></textarea>
+      </div>
+    </div>
+
+    <div class="campoEmails">
+      <div class="campo">
+        <label>Departamento</label>
+        <ng-select class="custom" formControlName="Departamento" [clearable]="false" (change)="adicionarDepartamento()">
+          <ng-option value="">Nenhum</ng-option>
+          <ng-option *ngFor="let item of departamentos" value="{{item.DepartamentoID}}">{{item.Nome}}</ng-option>
+        </ng-select>
+      </div>
+
+      <div class="tabela" *ngIf="departamentosAdicionados.length > 0">
+        <table>
+          <thead>
+            <th>Código do Departamento</th>
+            <th>Descrição</th>
+            <th>Remover</th>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of departamentosAdicionados">
+              <td>{{ item.DepartamentoID }}</td>
+              <td>{{ item.Nome }}</td>
+              <td>
+                <i class="fa fa-trash" (click)="removerDepartamento(item.DepartamentoID)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--div class="campoEmails">
+      <div class="campo">
+        <label>Email</label>
+        <div class="adicionarEmail">
+          <input type="text" formControlName="Email">
+          <i class="fa fa-plus" (click)="adicionarEmail()"></i>
+        </div>
+      </div>
+
+      <div class="tabela" *ngIf="emailsAdicionados.length > 0">
+        <table>
+          <thead>
+            <th>Email</th>
+            <th>Remover</th>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of emailsAdicionados">
+              <td>{{item}}</td>
+              <td>
+                <i class="fa fa-trash" (click)="removerEmail(item)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </!--div-->
+
+    <button (click)="enviarPhishing()">Enviar Phishing</button>
+  </form>
+</section>

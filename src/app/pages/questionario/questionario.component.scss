@@ -1,62 +1,78 @@
 .questionario {
   width: 100%;
-  padding: 5em 0 2em 0;
-  background-color: #f2f2f2;
+  padding: 0 0 3em 0;
+  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
 
   .cabecalho {
     width: 100%;
-    padding: .5em 0;
-    position: absolute;
-    top: 0;
-    left: 0;
+    padding: 0 0;
     text-align: center;
-    background-color: #fff;
-    border-bottom: 1px solid #333;
-    background-color: #ededed;
+    background: linear-gradient(to right, #00a74a, #059747);
+    color: #fff;
+    border-bottom: 1px solid #ddd;
 
     img {
-      width: 125px;
+      width: 150px;
       cursor: pointer;
+      margin-bottom: 1em;
     }
   }
 
   .formularioQuestionario {
+    padding: 0 .5em;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
     p {
-      font-size: 22px;
-      font-weight: 600;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      margin: 1.5em 0 1em 0;
     }
 
     .questoes {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
 
       .questao {
-        margin-bottom: 1em;
-        padding: 10px;
+        padding: 1.5em;
         background-color: #fff;
-        border: 2px solid transparent;
-        border-radius: 5px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
 
         h3 {
-          font-size: 20px;
-          font-weight: 600;
+          font-size: 1.2rem;
+          font-weight: bold;
           color: #01803a;
+          margin-bottom: 1em;
         }
 
         ul {
           list-style: none;
-          padding-left: 0;
+          padding: 0;
 
           li {
             margin-bottom: 1em;
 
             label {
+              font-size: 1rem;
+              color: #555;
               cursor: pointer;
 
               input {
+                margin-right: 0.5em;
                 cursor: pointer;
               }
             }
@@ -67,18 +83,66 @@
       .unanswered {
         border: 2px solid red;
       }
+    }
 
-      .botaoSubmit {
-        text-align: center;
+    .campoNome {
+      width: 100%;
+      max-width: 900px;
 
-        button {
-          width: 100%;
-          max-width: 250px;
-          padding: .25em;
-          border: none;
-          border-radius: 5px;
-          background-color: #333;
-          color: #fff;
+      label {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 0.5em;
+      }
+
+      ng-select {
+        width: 100%;
+        border: 1px solid #828282;
+        border-radius: 5px;
+        padding: 0.5em;
+
+        &.ng-invalid {
+          border-color: red;
+        }
+      }
+    }
+
+    .botaoSubmit {
+      width: 100%;
+      text-align: center;
+
+      button {
+        padding: 0.75em 2em;
+        font-size: 1rem;
+        color: #fff;
+        background: linear-gradient(to right, #059747, #00a74a);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: linear-gradient(to right, #00a74a, #059747);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cabecalho img {
+      width: 125px;
+    }
+
+    .formularioQuestionario {
+      p {
+        font-size: 1rem;
+      }
+
+      .questoes {
+        .questao {
+          padding: 1em;
         }
       }
     }

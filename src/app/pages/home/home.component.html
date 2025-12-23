@@ -1,18 +1,5 @@
 <section>
-  <div class="cabecalho">
-    <div class="titulo">
-      <h1>
-        Bem-vindo ao Treinamento de Cibersegurança da
-        <span>Bebidas Poty.</span>
-      </h1>
-
-      <h2>Parece que você foi vítima de um golpe cibernético. Leia atentamente todo o treinamento marcando os tópicos
-        como
-        "Verificado" e no final envie o formulário para completar.</h2>
-    </div>
-
-    <img src="/assets/images/home.png" alt="">
-  </div>
+  <app-cabecalho-treinamento></app-cabecalho-treinamento>
 
   <form class="treinamento" [formGroup]="formularioTreinamento" #formDir="ngForm">
     <div class="caixa"
@@ -45,14 +32,6 @@
             • O que é: Ransomware é um tipo de malware que criptografa os arquivos de um sistema e exige um resgate em
             troca
             da chave de descriptografia.
-          </p>
-
-          <p>
-            • Prevenção: Evite abrir anexos de e-mails suspeitos, mantenha o software atualizado, faça backups
-            regulares,
-            mantenha medidas de segurança avançada em aplicativos, como por exemplo autenticação de 2 fatores do
-            WhatsApp
-            etc.
           </p>
 
           <p>
@@ -599,7 +578,7 @@
       </div>
     </div>
 
-    <div class="formulario">
+    <!--div class="formulario">
       <h3>Faça o envio do formulário para completar o treinamento:</h3>
 
       <div class="campoNome">
@@ -622,7 +601,11 @@
       <div class="botao">
         <button (click)="enviarFormulario()">Responder Questionário</button>
       </div>
-    </div>
+    </!--div-->
+    <button (click)="enviarFormulario()">
+      Treinamento LGPD
+      <i class="fa fa-arrow-right"></i>
+    </button>
   </form>
 </section>
 

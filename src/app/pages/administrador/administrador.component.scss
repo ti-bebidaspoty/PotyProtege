@@ -1,231 +1,122 @@
 .login {
   width: 100%;
   height: 100vh;
+  padding: 0 .56em;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f2f2f2;
+  background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
 
   .cabecalho {
     width: 100%;
-    padding: .5em 0;
+    padding: 1em 0;
     position: absolute;
     top: 0;
     left: 0;
     text-align: center;
-    background-color: #fff;
-    border-bottom: 1px solid #333;
-    background-color: #ededed;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     img {
-      width: 125px;
+      width: 150px;
       cursor: pointer;
     }
   }
 
   form {
     width: 100%;
-    max-width: 600px;
-    padding: 1em;
+    max-width: 500px;
+    height: 300px;
+    padding: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to top, #ffffff, #f8f8f8);
 
     .titulo {
       width: 100%;
-      max-width: 400px;
-      margin-bottom: 1em;
+      margin-bottom: 1.5em;
       display: flex;
       align-items: center;
       justify-content: center;
 
       .linha {
         flex-grow: 1;
-        height: 1px;
-        background-color: #a7a7a7;
+        height: 2px;
+        background-color: #d1d1d1;
       }
 
       p {
-        margin: 0 10px;
+        margin: 0 15px;
         white-space: nowrap;
-        color: #a7a7a7;
+        color: #555;
+        font-weight: bold;
+        font-size: 18px;
       }
     }
 
     .camposFormulario {
       width: 100%;
-      max-width: 400px;
-      padding: 0;
+      margin-bottom: 1em;
       display: flex;
-      flex-direction: row;
-      justify-content: center;
       align-items: center;
-      border: 2px solid rgb(232, 232, 232);
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: #f7f7f7;
 
       input {
-        width: 100%;
-        max-width: 400px;
-        padding: 0.25em 1em;
+        width: calc(100% - 50px);
+        padding: 0.75em;
         font-size: 14px;
+        border: none;
+        outline: none;
+        background: transparent;
       }
 
       i {
         width: 50px;
-        height: 35px;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgb(232, 232, 232);
+        background-color: #eaeaea;
+        color: #777;
       }
     }
 
     #campoSenha {
-      margin-top: 1em;
-
-      i {
-        width: 58px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgb(232, 232, 232);
-      }
+      position: relative;
 
       #botaoVisibilidadeSenha {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
         cursor: pointer;
+        color: #777;
       }
     }
 
     button {
       width: 100%;
-      max-width: 250px;
-      margin-top: 2em;
-      padding: 0.25em 1em;
+      max-width: 200px;
+      padding: .3em .75em;
       border: none;
       border-radius: 5px;
-      background-color: #059747;
-      color: #fff;
-    }
-  }
-}
-
-.relatorio {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 6em 1em 0 1em;
-
-  .cabecalho {
-    width: 100%;
-    padding: .5em 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    text-align: center;
-    background-color: #ededed;
-
-    img {
-      width: 125px;
+      background-color: #00A74A;
+      color: #ffffff;
+      font-size: 16px;
       cursor: pointer;
-    }
-  }
+      transition: background-color 0.3s;
 
-  label {
-    font-size: 30px;
-    font-weight: 700;
-  }
-
-  .tabelaRelatorio {
-    height: fit-content;
-    max-height: 650px;
-    overflow-x: auto;
-    overflow-y: auto;
-    border: 1px solid #333;
-
-    #semNavegacoes {
-      text-align: center;
-      text-wrap: wrap;
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    table {
-      min-width: 1000px;
-      width: 100%;
-      table-layout: fixed;
-      border-collapse: collapse;
-
-      thead {
-        position: sticky;
-        top: 0;
-        overflow-x: auto;
-        background-color: #333;
-
-        & th {
-          padding: 5px;
-          color: #fff;
-          font-size: 13px;
-          font-weight: 700;
-          text-align: center;
-        }
+      &:hover {
+        background-color: #059747;
       }
-
-      tbody {
-        tr {
-          cursor: pointer;
-
-          &:nth-child(odd) {
-            background-color: #fff;
-          }
-          &:nth-child(even) {
-            background-color: #dadada;
-          }
-
-          td {
-            text-align: center;
-            padding: 5px 1em;
-            font-size: 12px;
-
-            i {
-              color: red;
-              cursor: pointer;
-            }
-          }
-
-          &:hover {
-            background-color: rgb(201, 225, 252);
-          }
-        }
-      }
-    }
-  }
-
-  .exportacao {
-    width: 100%;
-    padding: 1em 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-
-    select {
-      width: 100%;
-      max-width: 100px;
-      margin-right: 2em;
-      padding: .25em .5em;
-      border: none;
-      border-radius: 5px;
-      background-color: #ededed;
-      cursor: pointer;
-    }
-
-    button {
-      background-color: transparent;
-      border: none;
-      border-radius: 5px;
     }
   }
 }

@@ -1,6 +1,6 @@
 <section class="questionario">
   <div class="cabecalho">
-    <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
+    <img id="imagemColorida" src="/assets/images/logos/logoCompletaBranca2.png" alt="" routerLink="/Home">
   </div>
 
   <div class="formularioQuestionario">
@@ -20,10 +20,21 @@
         </ul>
       </div>
 
+      <div class="campoNome">
+        <label>Digite seu Nome Completo:</label>
+        <ng-select class="custom" [(ngModel)]="colaboradorSelecionado" [clearable]="false"
+        [style.border]="colaboradorSelecionado == null && submited? '1px solid red': '1px solid #828282'"
+          style="border-radius: 5px; margin-bottom: 2em;">
+          <ng-option *ngFor="let item of colaboradores" value="{{item.ColaboradorID}}">{{item.ColaboradorID}} -
+            {{item.Nome}}</ng-option>
+        </ng-select>
+      </div>
+
       <div class="botaoSubmit">
         <button (click)="onSubmit()">Enviar Respostas</button>
       </div>
     </div>
   </div>
-
 </section>
+
+<app-rodape></app-rodape>

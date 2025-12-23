@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AutenticacaoService } from 'src/services/autenticacao.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, Event, NavigationEnd } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
 
 import { saveAs } from 'file-saver';
 import { ngxCsv } from 'ngx-csv';
@@ -11,23 +7,17 @@ import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import { CellInput, RowInput, UserOptions } from 'jspdf-autotable';
 
-import { RelatorioService } from 'src/services/relatorio.service';
-import { IRelatorio } from 'src/modules/relatorio.interface';
+import { IRelatorioPhishing } from 'src/modules/emailFalso.interface';
+import { EmailFalsoService } from 'src/services/emailFalso.service';
 
 @Component({
-  selector: 'app-administrador',
-  templateUrl: './administrador.component.html',
-  styleUrl: './administrador.component.scss'
+  selector: 'app-phishing',
+  templateUrl: './phishing.component.html',
+  styleUrl: './phishing.component.scss'
 })
-export class AdministradorComponent implements OnInit {
-  protected formularioLogin!: FormGroup;
-
-  protected autenticado: boolean = false;
-
-  protected senhaVisivel: boolean = false;
-
-  protected relatorio: IRelatorio[] = [];
-  protected relatorioFiltrado: IRelatorio[] = [];
+export class PhishingComponent implements OnInit {
+  protected relatorio: IRelatorioPhishing[] = [];
+  protected relatorioFiltrado: IRelatorioPhishing[] = [];
   protected relatorioEnviar: any[] = [];
 
   protected numeroPagina: number = 1;
@@ -37,79 +27,39 @@ export class AdministradorComponent implements OnInit {
 
   protected cabecalhos: any[] = [
     {
-      CampoTitulo: "Código Alternativo"
-    },
-    {
-      CampoTitulo: "Nome"
-    },
-    {
-      CampoTitulo: "Depatamento"
-    },
-    {
-      CampoTitulo: "Cargo"
+      CampoTitulo: "Usuário"
     },
     {
       CampoTitulo: "Data/Hora"
-    }
-    ,
-    {
-      CampoTitulo: "Acertos"
     }
   ];
 
   protected campoPesquisa: string = '';
 
+  protected menuAtivo: boolean = false;
+
+  campanhasUnicas: string[] = [];
+  campanhaExpandida: string | null = null;
+
   constructor(
-    private router: Router,
-    private viewportScroller: ViewportScroller,
-    private autenticacaoService: AutenticacaoService,
-    private relatorioService: RelatorioService,
-    private formBuilder: FormBuilder,
-  ) {
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationEnd) {
-        this.viewportScroller.scrollToPosition([0, 0]);
-      }
-    });
-  }
+    private emailFalsoService: EmailFalsoService
+  ) { }
 
   async ngOnInit(): Promise<void> {
-    this.formularioLogin = this.formBuilder.group({
-      Usuario: ['', Validators.required],
-      Senha: ['', Validators.required]
-    });
-
-    /*this.relatorio = await this.relatorioService.buscarRelatorio().toPromise() || [];
+    this.relatorio = await this.emailFalsoService.buscarRelatorioPhishing().toPromise() || [];
 
     this.relatorio.forEach(item => {
       this.relatorioEnviar.push({
-        CodigoAlternativo: item.CodigoAlternativo,
-        Nome: item.Nome,
-        Departamento: item.Departamento,
-        Cargo: item.Cargo,
+        Email: item.Email,
         DataHora: this.formatarDataBrasileira(item.DataHora),
-        Acertos: item.Acertos
+        Campanha: item.Campanha
       });
-    });*/
+    });
 
-    this.autenticado = sessionStorage.getItem("Autenticado") == "True"? true: false || false;
+    this.campanhasUnicas = [...new Set(this.relatorio.map(item => item.Campanha))];
   }
 
-  protected realizarLogin(): void {
-    if (this.formularioLogin.valid) {
-      this.autenticacaoService.realizarAutenticacao(this.formularioLogin.get('Usuario')?.value, this.formularioLogin.get('Senha')?.value).subscribe(() => {
-        this.autenticado = true;
-        sessionStorage.setItem("Autenticado", "True");
-        this.router.navigate(['/RelatoriosTreinamento']);
-      }, error => alert(error.error.Resposta));
-    }
-  }
-
-  protected alterarVisibilidadeSenha(): void {
-    this.senhaVisivel = !this.senhaVisivel;
-  }
-
-  /*protected exportarConteudo(): void {
+  protected exportarConteudo(): void {
     if (this.valorExportar == 'XLSX') {
       this.exportarXLSX();
     } else if (this.valorExportar == 'CSV') {
@@ -157,7 +107,7 @@ export class AdministradorComponent implements OnInit {
           content: item.CampoTitulo,
           styles: { fillColor: [0, 167, 74] }
         };
-        return cell;1
+        return cell; 1
       })
     ];
 
@@ -183,6 +133,36 @@ export class AdministradorComponent implements OnInit {
     doc.save(`relatorio.pdf`);
   }
 
+  protected pesquisar(): void {
+    this.numeroPagina = 1;
+
+    if (this.campoPesquisa.trim() !== '') {
+      const termo = this.campoPesquisa.toLowerCase();
+
+      // Filtra apenas por nome da campanha
+      this.relatorioFiltrado = this.relatorio.filter(item =>
+        item.Campanha?.toLowerCase().includes(termo)
+      );
+
+      this.relatorioEnviar = this.relatorioFiltrado;
+
+      // Atualiza a lista de campanhas únicas filtradas
+      this.campanhasUnicas = [...new Set(this.relatorioFiltrado.map(item => item.Campanha))];
+    } else {
+      this.limparPesquisa();
+    }
+  }
+
+  protected limparPesquisa(): void {
+    this.campoPesquisa = '';
+    this.relatorioFiltrado = [];
+    this.relatorioEnviar = this.relatorio;
+
+    // Restaura campanhas únicas com todos os dados
+    this.campanhasUnicas = [...new Set(this.relatorio.map(item => item.Campanha))];
+  }
+
+
   protected formatarDataBrasileira(dataAmericana: string): string {
     const data = new Date(dataAmericana);
 
@@ -196,32 +176,38 @@ export class AdministradorComponent implements OnInit {
     return `${dia}/${mes}/${ano} - ${horas}:${minutos}`;
   }
 
-  protected pesquisar(): void {
-    this.numeroPagina = 1;
+  protected formatarSomenteData(dataAmericana: string): string {
+    const data = new Date(dataAmericana);
 
-    if (this.campoPesquisa != '') {
-      this.relatorioFiltrado = [];
+    const dia = String(data.getDate()).padStart(2, '0');
+    const mes = String(data.getMonth() + 1).padStart(2, '0');
+    const ano = data.getFullYear();
 
-      this.relatorioFiltrado = this.relatorio.filter((relatorio) => {
-        return (
-          (relatorio.Nome && relatorio.Nome.toLowerCase().includes(this.campoPesquisa.toLowerCase())) ||
-          (relatorio.Departamento && relatorio.Departamento.toLowerCase().includes(this.campoPesquisa.toLowerCase()))
-        )
-      });
-
-      this.relatorioEnviar = this.relatorioFiltrado;
-    } else {
-      this.limparPesquisa();
-    }
-  }
-
-  protected limparPesquisa(): void {
-    this.campoPesquisa = "";
-    this.relatorioFiltrado = [];
-    this.relatorioEnviar = this.relatorio;
+    return `${dia}/${mes}/${ano}`;
   }
 
   protected aoMudarDadosTabela(event: any): void {
     this.numeroPagina = event;
-  }*/
+  }
+
+  protected mudarMenuAtivo(): void {
+    this.menuAtivo = !this.menuAtivo;
+  }
+
+  toggleCampanha(campanha: string): void {
+    this.campanhaExpandida = this.campanhaExpandida === campanha ? null : campanha;
+  }
+
+  getUsuariosPorCampanha(campanha: string): IRelatorioPhishing[] {
+    return this.relatorio.filter(item => item.Campanha === campanha);
+  }
+
+  public excluirCampanha(campanha: string): void {
+    this.emailFalsoService.excluirCampanha(campanha).subscribe(() => {
+      alert("Campanha excluída com sucesso!");
+      location.reload();
+    }, err => {
+      console.log(err);
+    });
+  }
 }

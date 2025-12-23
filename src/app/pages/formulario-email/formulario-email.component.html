@@ -1,0 +1,46 @@
+<div class="visualizacaoEmail">
+  <div class="cabecalho">
+    <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
+
+    <i class="fa fa-bars" (click)="mudarMenuAtivo()"></i>
+
+    <div class="menu" *ngIf="menuAtivo">
+      <p routerLink="/RelatoriosTreinamento">Relatórios Treinamento</p>
+      <p routerLink="/Emails">Emails</p>
+      <p routerLink="/Phishing">Phishing</p>
+    </div>
+  </div>
+
+  <label>{{urlAtual.length == 3? 'Editar': 'Criar Novo'}} Email</label>
+
+  <img src="/assets/images/iconeCarregando.gif" alt="" *ngIf="carregandoAtivo">
+
+  <form [formGroup]="formularioEmail" #formDir="ngForm" *ngIf="!carregandoAtivo">
+    <div class="camposSuperiores">
+      <div class="campo">
+        <label>Nome</label>
+        <input type="text" formControlName="Nome">
+      </div>
+
+      <div class="campo">
+        <label>Email</label>
+        <input type="text" formControlName="Email">
+      </div>
+
+      <div class="campo">
+        <label>Departamento</label>
+        <ng-select class="custom" formControlName="Departamento" [clearable]="false">
+          <ng-option value="">Nenhum</ng-option>
+          <ng-option *ngFor="let item of departamentos"
+            value="{{item.DepartamentoID}}">{{item.Nome}}</ng-option>
+        </ng-select>
+      </div>
+    </div>
+
+    <div class="botoes">
+      <button (click)="enviarFormulario()">Salvar</button>
+
+      <button id="botaoExcluir" *ngIf="urlAtual.length == 3" (click)="excluirEmail()">Excluir</button>
+    </div>
+  </form>
+</div>

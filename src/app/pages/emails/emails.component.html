@@ -1,0 +1,73 @@
+<section class="emails">
+  <div class="cabecalho">
+    <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
+
+    <i class="fa fa-bars" (click)="mudarMenuAtivo()"></i>
+
+    <div class="menu" *ngIf="menuAtivo">
+      <p routerLink="/RelatoriosTreinamento">Relatórios Treinamento</p>
+      <p routerLink="/Emails">Emails</p>
+      <p routerLink="/Phishing">Phishing</p>
+    </div>
+  </div>
+
+  <label>
+    Emails
+    <button routerLink="/Emails/Novo">
+      <i class="fa fa-plus"></i>
+      Novo
+    </button>
+  </label>
+
+  <div class="campoPesquisa" *ngIf="relatorio.length > 0">
+    <input type="text" placeholder="Pesquise por Nome ou Departamento..." [(ngModel)]="campoPesquisa" (keydown.enter)="pesquisar()">
+
+    <button (click)="pesquisar()" id="botaoPesquisar">
+      <i class="fa fa-search"></i>
+      Pesquisar
+    </button>
+
+    <button id="botaoLimparPesquisa" (click)="limparPesquisa()" *ngIf="relatorioFiltrado.length > 0">
+      <i class="fa fa-trash"></i>
+    </button>
+  </div>
+
+  <div class="tabelaEmails" *ngIf="relatorio.length > 0">
+    <div class="tabela">
+      <table>
+        <thead>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Departamento</th>
+          <th>Visualizar</th>
+        </thead>
+
+        <tbody *ngIf="relatorioFiltrado.length == 0">
+          <tr *ngFor="let item of relatorio | paginate: {itemsPerPage: 40, currentPage: numeroPagina, totalItems: contador}">
+            <td>{{item.Nome}}</td>
+            <td>{{item.Email}}</td>
+            <td>{{item.Departamento}}</td>
+            <td>
+              <i class="fa fa-search" routerLink="/Emails/Visualizar/{{item.EmailID}}"></i>
+            </td>
+          </tr>
+        </tbody>
+
+        <tbody *ngIf="relatorioFiltrado.length > 0">
+          <tr *ngFor="let item of relatorioFiltrado | paginate: {itemsPerPage: 40, currentPage: numeroPagina, totalItems: contador}">
+            <td>{{item.Nome}}</td>
+            <td>{{item.Email}}</td>
+            <td>{{item.Departamento}}</td>
+            <td>
+              <i class="fa fa-search" routerLink="/Emails/Visualizar/{{item.EmailID}}"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer *ngIf="relatorio.length > 0">
+    <pagination-controls previousLabel="" nextLabel="" (pageChange)="aoMudarDadosTabela($event)"></pagination-controls>
+  </footer>
+</section>

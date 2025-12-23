@@ -1,0 +1,254 @@
+.relatorio {
+  width: 100%;
+  min-height: 100vh;
+  padding: 3em 1em 0 1em;
+  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .cabecalho {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    img {
+      width: 150px;
+      cursor: pointer;
+    }
+
+    i {
+      font-size: 18pt;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 15px;
+      width: 250px;
+      padding: 1em;
+      background-color: #333;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+      p {
+        margin: 0.5em 0;
+        padding: 0.5em;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #fff;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  label {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 2em 0 1em 0;
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100px;
+  }
+
+  form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 1em auto;
+    background-color: #fff;
+    padding: 1em 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    .camposSuperiores,
+    .campoEmails {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin-bottom: 2em;
+    }
+
+    .campoEmails {
+      flex-direction: column;
+
+      .tabela {
+        width: 100%;
+        height: fit-content;
+        max-height: 600px;
+        overflow-x: auto;
+        overflow-y: auto;
+        height: 100%;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        table {
+          width: 100%;
+
+          thead {
+            background-color: #333;
+            color: #fff;
+
+            th {
+              padding: 1em;
+              font-size: 1rem;
+              font-weight: bold;
+              text-align: center;
+            }
+          }
+
+          tbody {
+            tr {
+              cursor: pointer;
+
+              &:nth-child(odd) {
+                background-color: #f9f9f9;
+              }
+
+              &:nth-child(even) {
+                background-color: #eef2f7;
+              }
+
+              &:hover {
+                background-color: #d7f0db;
+              }
+
+              td {
+                padding: 0.8em;
+                font-size: 0.95rem;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .campo {
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      label {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 0.5em;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid #828282;
+        border-radius: 5px;
+        padding: 0.5em;
+      }
+
+      textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .adicionarEmail {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        input {
+          margin-right: 2em;
+        }
+
+        i {
+          padding: 1em;
+          border-radius: 25px;
+          background-color: #00a74a;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+    }
+
+    button {
+      padding: 0.5em 1em;
+      color: #fff;
+      background: linear-gradient(to right, #059747, #00a74a);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 12pt;
+
+      &:hover {
+        background: linear-gradient(to right, #00a74a, #059747);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cabecalho {
+      flex-direction: column;
+
+      img {
+        width: 100px;
+      }
+    }
+
+    form {
+      padding: 1em;
+
+      .camposSuperiores,
+      .campoEmails {
+        flex-direction: column;
+
+        .campo {
+          min-width: 100%;
+        }
+      }
+    }
+
+    .tabela {
+      table {
+        thead th {
+          font-size: 0.85rem;
+        }
+
+        tbody td {
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    button {
+      font-size: 10pt;
+    }
+  }
+}

@@ -1,49 +1,20 @@
-<section class="login">
+<section class="relatorio">
   <div class="cabecalho">
     <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
+
+    <i class="fa fa-bars" (click)="mudarMenuAtivo()"></i>
+
+    <div class="menu" *ngIf="menuAtivo">
+      <p routerLink="/RelatoriosTreinamento">Relatórios Treinamento</p>
+      <p routerLink="/Emails">Emails</p>
+      <p routerLink="/Phishing">Phishing</p>
+    </div>
   </div>
 
-  <form [formGroup]="formularioLogin" #formDir="ngForm">
-    <div class="titulo">
-      <div class="linha"></div>
-      <p>Administrador Poty Protege</p>
-      <div class="linha"></div>
-    </div>
-
-    <div class="camposFormulario">
-      <i class="fa fa-user"></i>
-
-      <input type="text"
-        placeholder="Usuário{{formularioLogin.get('Usuario')?.invalid && formDir.submitted? ' é obrigatório': ''}}"
-        formControlName="Usuario"
-        [style.border]="formularioLogin.get('Usuario')?.invalid && formDir.submitted? '2px solid red': '2px solid transparent'">
-    </div>
-
-    <div class="camposFormulario" id="campoSenha">
-      <i class="fa fa-lock"></i>
-
-      <input type="{{senhaVisivel? 'text': 'password'}}"
-        placeholder="Senha{{formularioLogin.get('Senha')?.invalid && formDir.submitted? ' é obrigatória': ''}}"
-        formControlName="Senha"
-        [style.border]="formularioLogin.get('Senha')?.invalid && formDir.submitted? '2px solid red': '2px solid transparent'">
-
-      <i id="botaoVisibilidadeSenha" class="fa fa-{{senhaVisivel? 'eye': 'eye-slash'}}"
-        (click)="alterarVisibilidadeSenha()"></i>
-    </div>
-
-    <button (click)="realizarLogin()">Entrar</button>
-  </form>
-</section>
-
-<!--section class="relatorio" *ngIf="autenticado == true">
-  <div class="cabecalho">
-    <img id="imagemColorida" src="/assets/images/logos/logoTotalColorida.png" alt="" routerLink="/Home">
-  </div>
-
-  <label>Relatório de Treinamentos Concluídos</label>
+  <label>Relatório de Treinamentos</label>
 
   <div class="campoPesquisa" *ngIf="relatorio.length > 0">
-    <input type="text" placeholder="Pesquise por Nome ou Departamento..." [(ngModel)]="campoPesquisa" (keydown.enter)="pesquisar()">
+    <input type="text" placeholder="Pesquise por Nome, Departamento ou Data..." [(ngModel)]="campoPesquisa" (keydown.enter)="pesquisar()">
 
     <button (click)="pesquisar()" id="botaoPesquisar">
       <i class="fa fa-search"></i>
@@ -107,6 +78,4 @@
       </button>
     </div>
   </footer>
-</!--section-->
-
-<app-rodape></app-rodape>
+</section>

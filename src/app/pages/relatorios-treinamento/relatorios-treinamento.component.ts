@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AutenticacaoService } from 'src/services/autenticacao.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, Event, NavigationEnd } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
 
 import { saveAs } from 'file-saver';
 import { ngxCsv } from 'ngx-csv';
@@ -15,17 +11,11 @@ import { RelatorioService } from 'src/services/relatorio.service';
 import { IRelatorio } from 'src/modules/relatorio.interface';
 
 @Component({
-  selector: 'app-administrador',
-  templateUrl: './administrador.component.html',
-  styleUrl: './administrador.component.scss'
+  selector: 'app-relatorios-treinamento',
+  templateUrl: './relatorios-treinamento.component.html',
+  styleUrl: './relatorios-treinamento.component.scss'
 })
-export class AdministradorComponent implements OnInit {
-  protected formularioLogin!: FormGroup;
-
-  protected autenticado: boolean = false;
-
-  protected senhaVisivel: boolean = false;
-
+export class RelatoriosTreinamentoComponent implements OnInit {
   protected relatorio: IRelatorio[] = [];
   protected relatorioFiltrado: IRelatorio[] = [];
   protected relatorioEnviar: any[] = [];
@@ -59,27 +49,14 @@ export class AdministradorComponent implements OnInit {
 
   protected campoPesquisa: string = '';
 
+  protected menuAtivo: boolean = false;
+
   constructor(
-    private router: Router,
-    private viewportScroller: ViewportScroller,
-    private autenticacaoService: AutenticacaoService,
     private relatorioService: RelatorioService,
-    private formBuilder: FormBuilder,
-  ) {
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationEnd) {
-        this.viewportScroller.scrollToPosition([0, 0]);
-      }
-    });
-  }
+  ) {}
 
   async ngOnInit(): Promise<void> {
-    this.formularioLogin = this.formBuilder.group({
-      Usuario: ['', Validators.required],
-      Senha: ['', Validators.required]
-    });
-
-    /*this.relatorio = await this.relatorioService.buscarRelatorio().toPromise() || [];
+    this.relatorio = await this.relatorioService.buscarRelatorio().toPromise() || [];
 
     this.relatorio.forEach(item => {
       this.relatorioEnviar.push({
@@ -90,26 +67,10 @@ export class AdministradorComponent implements OnInit {
         DataHora: this.formatarDataBrasileira(item.DataHora),
         Acertos: item.Acertos
       });
-    });*/
-
-    this.autenticado = sessionStorage.getItem("Autenticado") == "True"? true: false || false;
+    });
   }
 
-  protected realizarLogin(): void {
-    if (this.formularioLogin.valid) {
-      this.autenticacaoService.realizarAutenticacao(this.formularioLogin.get('Usuario')?.value, this.formularioLogin.get('Senha')?.value).subscribe(() => {
-        this.autenticado = true;
-        sessionStorage.setItem("Autenticado", "True");
-        this.router.navigate(['/RelatoriosTreinamento']);
-      }, error => alert(error.error.Resposta));
-    }
-  }
-
-  protected alterarVisibilidadeSenha(): void {
-    this.senhaVisivel = !this.senhaVisivel;
-  }
-
-  /*protected exportarConteudo(): void {
+  protected exportarConteudo(): void {
     if (this.valorExportar == 'XLSX') {
       this.exportarXLSX();
     } else if (this.valorExportar == 'CSV') {
@@ -196,6 +157,16 @@ export class AdministradorComponent implements OnInit {
     return `${dia}/${mes}/${ano} - ${horas}:${minutos}`;
   }
 
+  protected formatarSomenteData(dataAmericana: string): string {
+    const data = new Date(dataAmericana);
+
+    const dia = String(data.getDate()).padStart(2, '0');
+    const mes = String(data.getMonth() + 1).padStart(2, '0');
+    const ano = data.getFullYear();
+
+    return `${dia}/${mes}/${ano}`;
+  }
+
   protected pesquisar(): void {
     this.numeroPagina = 1;
 
@@ -205,7 +176,8 @@ export class AdministradorComponent implements OnInit {
       this.relatorioFiltrado = this.relatorio.filter((relatorio) => {
         return (
           (relatorio.Nome && relatorio.Nome.toLowerCase().includes(this.campoPesquisa.toLowerCase())) ||
-          (relatorio.Departamento && relatorio.Departamento.toLowerCase().includes(this.campoPesquisa.toLowerCase()))
+          (relatorio.Departamento && relatorio.Departamento.toLowerCase().includes(this.campoPesquisa.toLowerCase())) ||
+          (relatorio.DataHora && this.formatarSomenteData(relatorio.DataHora).includes(this.campoPesquisa))
         )
       });
 
@@ -223,5 +195,9 @@ export class AdministradorComponent implements OnInit {
 
   protected aoMudarDadosTabela(event: any): void {
     this.numeroPagina = event;
-  }*/
+  }
+
+  protected mudarMenuAtivo(): void {
+    this.menuAtivo = !this.menuAtivo;
+  }
 }

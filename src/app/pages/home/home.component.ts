@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Event, NavigationEnd } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 import { catchError, firstValueFrom, of, tap } from 'rxjs';
 
 import { ITreinamentoCompleto, IColaborador } from 'src/modules/usuarioCompleto.interface';
@@ -16,19 +17,26 @@ export class HomeComponent implements OnInit {
 
   protected formularioTreinamento!: FormGroup;
 
-  protected colaboradores: IColaborador[] = [];
+  //protected colaboradores: IColaborador[] = [];
 
   constructor(
-    private treinamentoCompletoService: TreinamentoCompletoService,
+    //private treinamentoCompletoService: TreinamentoCompletoService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private viewportScroller: ViewportScroller,
+  ) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.viewportScroller.scrollToPosition([0, 0]);
+      }
+    });
+  }
 
   async ngOnInit(): Promise<void> {
     this.formularioTreinamento = this.formBuilder.group({
-      Colaborador: ['', Validators.required],
-      Declaracao: [false, Validators.requiredTrue],
+      //Colaborador: ['', Validators.required],
+      //Declaracao: [false, Validators.requiredTrue],
       Topico1: [false, Validators.requiredTrue],
       Topico2: [false, Validators.requiredTrue],
       Topico3: [false, Validators.requiredTrue],
@@ -43,12 +51,13 @@ export class HomeComponent implements OnInit {
       Topico12: [false, Validators.requiredTrue]
     });
 
-    this.colaboradores = await this.treinamentoCompletoService.buscarColaboradores().toPromise() || [];
+    //this.colaboradores = await this.treinamentoCompletoService.buscarColaboradores().toPromise() || [];
   }
 
   protected enviarFormulario(): void {
     if (this.formularioTreinamento.valid) {
-      const colaborador: any = this.colaboradores.find(item => item.ColaboradorID == this.formularioTreinamento.get('Colaborador')?.value);
+      this.router.navigate(['/LGPD']);
+      /*const colaborador: any = this.colaboradores.find(item => item.ColaboradorID == this.formularioTreinamento.get('Colaborador')?.value);
 
       sessionStorage.setItem('ColaboradorID', colaborador.ColaboradorID);
       sessionStorage.setItem('DepartamentoID', colaborador.DepartamentoID);
@@ -56,7 +65,7 @@ export class HomeComponent implements OnInit {
 
       this.router.navigate(['/Questionario']);
 
-      /*const serviceCall = this.treinamentoCompletoService.gravarTreinamento(treinamentoEnviar);
+      const serviceCall = this.treinamentoCompletoService.gravarTreinamento(treinamentoEnviar);
 
       serviceCall.pipe(
         tap(() => {
